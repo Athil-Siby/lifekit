@@ -37,6 +37,22 @@ const abs = (path) => `${siteUrl}${path}`;
 
 const { tools, categories } = await import(join(root, 'src/config/tools.ts'));
 const { staticPages } = await import(join(root, 'src/config/pages.ts'));
+const { guides } = await import(join(root, 'src/config/guides.ts'));
+const { parseMarkdown } = await import(join(root, 'src/lib/markdown.ts'));
+
+function blocksToHtml(blocks) {
+  const inl = (items) => items.map((x) =>
+    x.type === 'bold' ? `<strong>${esc(x.text)}</strong>` :
+    x.type === 'code' ? `<code>${esc(x.text)}</code>` :
+    x.type === 'link' ? `<a href="${esc(x.href)}">${esc(x.text)}</a>` : esc(x.text)).join('');
+  return blocks.map((b) => {
+    if (b.type === 'h2') return `<h2 id="${esc(b.id)}">${inl(b.text)}</h2>`;
+    if (b.type === 'h3') return `<h3>${inl(b.text)}</h3>`;
+    if (b.type === 'p' || b.type === 'tip') return `<p>${inl(b.text)}</p>`;
+    const tag = b.type;
+    return `<${tag}>${b.items.map((it) => `<li>${inl(it)}</li>`).join('')}</${tag}>`;
+  }).join('');
+}
 
 const today = new Date().toISOString().slice(0, 10);
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -68,12 +84,31 @@ const pages = [
     // Crawlable fallback content shown before JavaScript runs.
     body: `<h1>${esc(t.name)}</h1><p>${esc(t.intro)}</p><h2>How to use</h2><ol>${t.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol><h2>FAQ</h2>${t.faqs.map((f) => `<h3>${esc(f.q)}</h3><p>${esc(f.a)}</p>`).join('')}`,
   })),
+  ...guides.map((g) => ({
+    path: `/guides/${g.slug}`,
+    title: `${g.title} | LifeKit`,
+    description: g.description,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: g.title,
+        description: g.description,
+        datePublished: g.date,
+        dateModified: g.date,
+        mainEntityOfPage: abs(`/guides/${g.slug}`),
+        author: { '@type': 'Organization', name: 'LifeKit' },
+        publisher: { '@type': 'Organization', name: 'LifeKit' },
+      },
+    ],
+    body: `<h1>${esc(g.title)}</h1><p>${esc(g.description)}</p>${blocksToHtml(parseMarkdown(g.body))}`,
+  })),
 ];
 
 // ---------- sitemap.xml ----------
 if (siteUrl) {
   const urls = pages.map((p) => {
-    const priority = p.path === '/' ? '1.0' : p.path.startsWith('/tools/') ? '0.9' : p.path === '/tools' ? '0.8' : '0.4';
+    const priority = p.path === '/' ? '1.0' : p.path.startsWith('/tools/') ? '0.9' : p.path === '/tools' ? '0.8' : p.path.startsWith('/guides') ? '0.7' : '0.4';
     return `  <url>\n    <loc>${esc(abs(p.path))}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>${priority}</priority>\n  </url>`;
   });
   writeFileSync(

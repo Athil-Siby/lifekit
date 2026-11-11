@@ -9,7 +9,7 @@ import { cn } from '../../lib/cn';
 const links = [
   { to: '/tools', label: 'All tools' },
   { to: '/tools?category=pdf', label: 'PDF' },
-  { to: '/tools?category=image', label: 'Images' },
+  { to: '/guides', label: 'Guides' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
@@ -31,6 +31,7 @@ export function Navbar({ onSearch }: { onSearch: () => void }) {
     const [path, query] = to.split('?');
     if (query) return location.pathname === path && location.search === `?${query}`;
     if (path === '/tools') return location.pathname.startsWith('/tools') && !location.search.includes('category=');
+    if (path === '/guides') return location.pathname.startsWith('/guides');
     return location.pathname === path;
   };
 

@@ -10,6 +10,8 @@ import { ToolIcon } from '../components/ToolIcon';
 import { FaqList } from '../components/Faq';
 import { AdSlot } from '../components/AdSlot';
 import { buttonClasses } from '../components/ui/Button';
+import { guides } from '../config/guides';
+import { GuideCard } from '../components/GuideCard';
 
 const homeFaqs = [
   {
@@ -173,6 +175,24 @@ export default function Home() {
                 ))}
               </ul>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Guides */}
+      <section className="container-page mt-24" aria-labelledby="guides-heading">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <h2 id="guides-heading" className="text-2xl font-bold tracking-tight text-fg">Helpful guides</h2>
+            <p className="mt-1 text-fg-muted">Quick how-tos for everyday digital tasks.</p>
+          </div>
+          <Link to="/guides" className="hidden items-center gap-1 text-sm font-medium text-accent-text hover:underline sm:inline-flex">
+            All guides <ArrowRight className="h-4 w-4" aria-hidden />
+          </Link>
+        </div>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {guides.slice(0, 3).map((g) => (
+            <GuideCard key={g.slug} guide={g} />
           ))}
         </div>
       </section>

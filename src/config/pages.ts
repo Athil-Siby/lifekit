@@ -21,6 +21,12 @@ export const staticPages: PageMeta[] = [
       'Browse every free LifeKit tool: PDF, image, generator, calculator, text and file utilities. Search by name or filter by category.',
   },
   {
+    path: '/guides',
+    title: 'Guides – Practical How-Tos | LifeKit',
+    description:
+      'Short, practical guides for everyday digital tasks: shrinking PDFs for email, choosing image formats, Wi-Fi QR codes, strong passwords and more.',
+  },
+  {
     path: '/about',
     title: 'About – LifeKit',
     description: 'Why LifeKit exists, how it works and what we commit to: useful tools, privacy by design and no account required.',

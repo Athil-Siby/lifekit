@@ -11,6 +11,8 @@ import { FaqList } from '../components/Faq';
 import { AdSlot } from '../components/AdSlot';
 import { PageLoader } from '../components/PageLoader';
 import { ErrorBoundary } from '../components/ErrorBoundary';
+import { guidesForTool } from '../config/guides';
+import { GuideCard } from '../components/GuideCard';
 import NotFound from './NotFound';
 
 export default function ToolPage() {
@@ -56,6 +58,7 @@ export default function ToolPage() {
   if (!tool || !Component) return <NotFound />;
   const category = getCategory(tool.category);
   const related = tool.related.map((s) => toolsBySlug[s]).filter(Boolean);
+  const toolGuides = guidesForTool(tool.slug).slice(0, 3);
 
   return (
     <article>
@@ -137,6 +140,17 @@ export default function ToolPage() {
       <div className="container-page">
         <AdSlot placement="tool" />
       </div>
+
+      {toolGuides.length > 0 && (
+        <section className="container-page mt-16" aria-labelledby="guides">
+          <h2 id="guides" className="text-xl font-semibold text-fg">Helpful guides</h2>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {toolGuides.map((g) => (
+              <GuideCard key={g.slug} guide={g} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="container-page mt-16" aria-labelledby="related">

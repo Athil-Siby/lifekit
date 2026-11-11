@@ -11,6 +11,8 @@ const Privacy = lazy(() => import('./pages/legal/Privacy'));
 const Terms = lazy(() => import('./pages/legal/Terms'));
 const Cookies = lazy(() => import('./pages/legal/Cookies'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const Guides = lazy(() => import('./pages/Guides'));
+const GuidePage = lazy(() => import('./pages/GuidePage'));
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,8 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: '/tools', element: <Tools /> },
       { path: '/tools/:slug', element: <ToolPage /> },
+      { path: '/guides', element: <Guides /> },
+      { path: '/guides/:slug', element: <GuidePage /> },
       { path: '/about', element: <About /> },
       { path: '/contact', element: <Contact /> },
       { path: '/privacy', element: <Privacy /> },
