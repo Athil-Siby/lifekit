@@ -1,0 +1,9 @@
+# ads.txt — Authorized Digital Sellers
+#
+# This file is intentionally empty until an advertising account is approved.
+# After Google AdSense approval, replace these comments with the line AdSense
+# gives you, which looks like:
+#
+#   google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+#
+# Use your real publisher ID. This file must be served at https://your-domain/ads.txt

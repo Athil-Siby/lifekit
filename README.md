@@ -1,0 +1,139 @@
+# LifeKit
+
+LifeKit is a set of 14 free everyday tools. Each one runs in the visitor's browser: PDF and image files are processed on their device and never uploaded.
+
+| Category | Tools |
+| --- | --- |
+| PDF | PDF Merger, PDF Splitter, PDF Compressor |
+| Images | Image Compressor, Image Converter |
+| Generators | QR Code Generator, Password Generator |
+| Calculators & converters | Unit Converter, Word & Character Counter, Percentage Calculator, Age Calculator, Time Zone Converter |
+| Text | Text Formatting Tools |
+| Files | File Size Calculator |
+
+The site also has a home page, a searchable tools directory, About and Contact pages, and Privacy, Terms and Cookie policy pages. It supports light and dark themes and works at phone width.
+
+## Tech stack
+
+React 19, TypeScript, Vite, Tailwind CSS v4, React Router and Lucide icons.
+
+| Library | Used for |
+| --- | --- |
+| `pdf-lib` | Merging, splitting and rebuilding PDFs |
+| `pdfjs-dist` | Rendering PDF pages (thumbnails, image-based compression) |
+| `qrcode` | QR code generation (PNG and SVG) |
+| `fflate` | ZIP download for split PDFs |
+| `@fontsource-variable/inter` | Self-hosted Inter font, so no third-party font requests |
+| `vitest` (dev) | Unit tests |
+
+The heavy libraries (pdf-lib, pdf.js, qrcode, fflate) are loaded only on the tool pages that need them.
+
+## Getting started
+
+You need Node.js 22.18 or newer, because the post-build script imports TypeScript config files directly.
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+The dev server runs at http://localhost:5173.
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Type-check, build to `dist/`, then generate the sitemap, robots.txt and one HTML file per route |
+| `npm run preview` | Serve the production build locally |
+| `npm test` | Run the unit tests |
+| `npm run typecheck` | Run TypeScript only |
+
+## Environment variables
+
+Copy `.env.example` to `.env`, or set the variables in your hosting dashboard. They are read at **build time** and end up in the public JavaScript, so never put a secret in one.
+
+| Variable | Purpose |
+| --- | --- |
+| `VITE_SITE_URL` | Public URL with no trailing slash. **Needed for production**: it is used for `sitemap.xml`, canonical URLs and Open Graph URLs. If it is missing, no sitemap is generated. |
+| `VITE_CONTACT_ENDPOINT` | Any endpoint that accepts a JSON POST, such as a Formspree form URL. If it is empty, the contact form says it is not connected and does not pretend to send. |
+| `VITE_CONTACT_EMAIL` | Optional public email address shown on the contact and legal pages. |
+| `VITE_ADS_ENABLED` | Must be `true` for ads to load. |
+| `VITE_ADSENSE_CLIENT` | Your real `ca-pub-…` publisher ID. |
+| `VITE_AD_SLOT_HOME`, `VITE_AD_SLOT_TOOL`, `VITE_AD_SLOT_DIRECTORY` | Ad unit IDs, one per placement. A placement with no ID renders nothing. |
+
+## Project structure
+
+```
+src/
+  config/      tools.ts (registry, SEO copy, FAQs), pages.ts, site.ts, ads.ts, legal.ts, limits.ts
+  lib/         Pure logic (units, age, timezone, password, text, percentages, page ranges, QR payloads,
+               search) plus browser processing (pdf.ts, image.ts). *.test.ts sit next to the code.
+  tools/       One UI component per tool, lazy-loaded through tools/index.ts
+  components/  Layout, ToolCard, SearchBar, CategoryFilter, AdSlot, CookieConsent, Faq, …
+    ui/        Design system: Button, Card, form fields, Dropzone, Modal, Toast, Notice, Segmented, …
+  hooks/       useTheme, useConsent, useSeo, useCopy, useObjectUrl, useImageFile
+  pages/       Home, Tools, ToolPage, About, Contact, NotFound, legal/*
+  styles/      Tailwind entry and design tokens (CSS variables for light and dark)
+  utils/       Formatting, downloads, file validation
+scripts/generate-sitemap.mjs   Post-build SEO step
+public/        favicon, og-image.png, ads.txt
+```
+
+### Adding a tool
+
+1. Write the logic in `src/lib/yourTool.ts` and add tests in `yourTool.test.ts`.
+2. Build the interface in `src/tools/YourTool.tsx` as a default export.
+3. Register it in `src/tools/index.ts`.
+4. Add its metadata, instructions, FAQs and related tools to `src/config/tools.ts`. If it needs a new icon, also add the icon to `IconName` and `src/components/ToolIcon.tsx`.
+
+Search, the directory, the sitemap, the per-route HTML and structured data all update automatically from the registry.
+
+## SEO
+
+- Each route gets its own title, description, canonical URL, Open Graph tags and JSON-LD. These are set at runtime by `useSeo`, and also written into a static `dist/<route>/index.html` at build time, so crawlers and link previews see them without running JavaScript.
+- Tool pages include `WebApplication`, `FAQPage` and `BreadcrumbList` structured data. The home page includes `WebSite` (with a search action) and `FAQPage`.
+- The static HTML for each tool page also contains readable fallback content: the intro, the steps and the FAQs.
+- `sitemap.xml` and `robots.txt` are generated at build time.
+
+## Advertising (AdSense readiness)
+
+Advertising is **off by default**, and the site works fully without it.
+
+- `src/config/ads.ts` enables ads only when `VITE_ADS_ENABLED=true` and the publisher ID is a valid `ca-pub-` ID.
+- `<AdSlot>` renders nothing unless ads are enabled, the placement has a slot ID, **and** the visitor has consented to advertising. Placements sit only between content sections, never next to upload, download or copy controls.
+- The site contains no ad scripts and no placeholder publisher IDs.
+- `public/ads.txt` contains only comments for now. After approval, replace them with the line AdSense gives you.
+- Once ads are enabled, a consent banner and a "Cookie settings" link appear (`CookieConsent`, `useConsent`).
+
+**Important:** the built-in consent banner is an integration point, not a certified consent management platform (CMP). To serve ads to visitors in the EEA, UK or Switzerland, Google requires a Google-certified CMP, such as Google's own Privacy & messaging tool. Connect that CMP to `ConsentProvider`, or replace the provider with it, before you enable ads. Applying to AdSense, verifying the site and getting approved are separate steps you do yourself.
+
+## Legal pages
+
+Before launch, edit `src/config/legal.ts`: set the operator name, optional location and last-updated date. The policies describe how the site works as built: no analytics, no cookies of its own, files processed locally. Some sections change automatically depending on whether ads or the contact endpoint are configured. They are a starting point, not legal advice. Have them reviewed for your jurisdiction, and update them whenever you add analytics, ads or a backend.
+
+## Deployment
+
+The repo includes configuration for both Netlify (`netlify.toml`) and Vercel (`vercel.json`). Each one builds with `npm run build`, publishes `dist/`, falls back to the single-page app for unknown routes, caches hashed assets for a long time, and sets basic security headers.
+
+1. Push the repository to GitHub, GitLab or Bitbucket.
+2. Import it in Netlify or Vercel. The build settings are picked up from the config file.
+3. Set `VITE_SITE_URL` to your final domain, plus any optional variables.
+4. Add your custom domain in the hosting dashboard, then rebuild so the sitemap uses the right domain.
+5. Submit `https://your-domain/sitemap.xml` in Google Search Console.
+
+Any static host works, as long as it serves `dist/<route>/index.html` for `/<route>` and falls back to `/index.html` for everything else.
+
+### Updating the site
+
+Edit the code or content (most copy lives in `src/config/tools.ts` and `src/pages/`). Then run `npm test` and `npm run build`, and push. Netlify and Vercel redeploy automatically.
+
+## Limits and known limitations
+
+- File limits, set in `src/config/limits.ts`: 150 MB per PDF; 50 files or 400 MB total for merging; 40 MB or 50 megapixels per image. Processing happens on the visitor's device, so very large files depend on how much memory their browser has.
+- **Password-protected PDFs** are not supported. The tools say so instead of failing silently.
+- **PDF compression:** lossless mode only repacks the file, so savings are usually small. The stronger levels turn each page into a JPEG image, which makes text unselectable. The tool always shows the real sizes, and only offers a download when the file actually got smaller.
+- **PDF merging** keeps page content but may drop bookmarks and interactive form fields.
+- **Image formats:** input is limited to what the browser can decode, which usually rules out HEIC. Output is JPG, PNG or WebP. Animated GIFs keep only their first frame.
+- **Time zones** use the browser's built-in IANA time-zone database.

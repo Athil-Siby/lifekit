@@ -1,0 +1,148 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Semantic design tokens. Components use these via Tailwind classes such as
+   bg-surface, text-fg-muted, border-line, bg-accent. */
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+  --surface-3: #f1f5f9;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --fg: #0f172a;
+  --fg-muted: #475569;
+  --fg-subtle: #64748b;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-soft: #eef2ff;
+  --accent-fg: #ffffff;
+  --accent-text: #4338ca;
+  --success: #15803d;
+  --success-soft: #f0fdf4;
+  --danger: #b91c1c;
+  --danger-soft: #fef2f2;
+  --warning: #a16207;
+  --warning-soft: #fefce8;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0b0f17;
+  --surface: #111723;
+  --surface-2: #151c2a;
+  --surface-3: #1c2433;
+  --line: #243044;
+  --line-strong: #334158;
+  --fg: #e8edf5;
+  --fg-muted: #a3afc2;
+  --fg-subtle: #8492a8;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --accent-soft: #1e1f3d;
+  --accent-fg: #ffffff;
+  --accent-text: #a5b4fc;
+  --success: #4ade80;
+  --success-soft: #0f2a1b;
+  --danger: #f87171;
+  --danger-soft: #2d1416;
+  --warning: #facc15;
+  --warning-soft: #2a2410;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-text: var(--accent-text);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  button, [role="button"] {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  input[type="color"] {
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0;
+  }
+  input[type="color"]::-webkit-color-swatch-wrapper { padding: 3px; }
+  input[type="color"]::-webkit-color-swatch { border: none; border-radius: 6px; }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .prose-lk {
+    @apply text-fg-muted leading-relaxed;
+  }
+  .prose-lk h2 { @apply text-fg text-xl font-semibold mt-10 mb-3 scroll-mt-24; }
+  .prose-lk h3 { @apply text-fg text-base font-semibold mt-6 mb-2; }
+  .prose-lk p { @apply mb-4; }
+  .prose-lk ul { @apply mb-4 list-disc pl-6 space-y-1.5; }
+  .prose-lk a { @apply text-accent-text underline underline-offset-2 hover:no-underline; }
+  .prose-lk strong { @apply text-fg font-semibold; }
+  .checkerboard {
+    background-color: #fff;
+    background-image:
+      linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
+      linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
+      linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  }
+}
+
+@keyframes lk-fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: lk-fade-up 0.25s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
