@@ -3,6 +3,7 @@ import QRCode from 'qrcode';
 import { Download, Link2, Mail, MessageSquare, Phone, QrCode, Type, Wifi } from 'lucide-react';
 import { buildQrPayload, contrastRatio, emptyQrFields, relativeLuminanceDarker, type QrFields, type QrKind } from '../lib/qrContent';
 import { downloadBlob, downloadText } from '../utils/download';
+import { consumeHashParams, readParam } from '../lib/hashParams';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Checkbox, Input, Label, Range, Select, Textarea } from '../components/ui/Form';
@@ -46,8 +47,17 @@ function ColorField({ label, value, onChange }: { label: string; value: string; 
 
 export default function QrCodeGenerator() {
   const toast = useToast();
-  const [kind, setKind] = useState<QrKind>('url');
-  const [fields, setFields] = useState<QrFields>(emptyQrFields);
+  // Optional prefill from the browser extension: #url=… or #text=…
+  const [initial] = useState(() => {
+    const p = consumeHashParams();
+    const url = readParam(p, 'url');
+    const text = readParam(p, 'text');
+    if (url) return { kind: 'url' as QrKind, fields: { ...emptyQrFields, url: url.slice(0, 2000) } };
+    if (text) return { kind: 'text' as QrKind, fields: { ...emptyQrFields, text: text.slice(0, 2000) } };
+    return { kind: 'url' as QrKind, fields: emptyQrFields };
+  });
+  const [kind, setKind] = useState<QrKind>(initial.kind);
+  const [fields, setFields] = useState<QrFields>(initial.fields);
   const [fg, setFg] = useState('#0f172a');
   const [bg, setBg] = useState('#ffffff');
   const [size, setSize] = useState(512);

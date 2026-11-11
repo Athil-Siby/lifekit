@@ -113,6 +113,36 @@ Advertising is **off by default**, and the site works fully without it.
 
 Before launch, edit `src/config/legal.ts`: set the operator name, optional location and last-updated date. The policies describe how the site works as built: no analytics, no cookies of its own, files processed locally. Some sections change automatically depending on whether ads or the contact endpoint are configured. They are a starting point, not legal advice. Have them reviewed for your jurisdiction, and update them whenever you add analytics, ads or a backend.
 
+## Browser extension
+
+`extension/` contains a Chrome (Manifest V3) extension. It's a free quick launcher that opens the tools on your website, where the ads are. It doesn't show ads itself, because AdSense doesn't allow ads inside extensions.
+
+- **Toolbar popup:** search all tools and press Enter or click a tool to open it on the website. Shortcut: Alt+Shift+L.
+- **Right-click menu:**
+  - "Count words in selection" and "Format selected text" open those tools with the selected text filled in.
+  - "Create QR code for this page/link" opens the QR tool with that address filled in.
+- **Permissions:** only `contextMenus`. It collects no data. Content is passed after `#` in the address, which is never sent to the server, and the website clears it once read (`src/lib/hashParams.ts`).
+
+Build it for your live address:
+
+```bash
+VITE_SITE_URL=https://your-domain.com npm run build:extension
+```
+
+This creates `dist-extension/`, the folder you load into Chrome, and `lifekit-extension.zip`, the file you upload to the Chrome Web Store. The tool list is generated from `src/config/tools.ts`, and the version comes from `package.json`.
+
+To try it in Chrome:
+1. Open `chrome://extensions` and turn on **Developer mode**.
+2. Click **Load unpacked** and choose `dist-extension/`.
+
+When your domain changes, rebuild the extension with the new `VITE_SITE_URL` and upload a new version, with a higher `version` in `package.json`.
+
+To publish:
+1. Register at the Chrome Web Store Developer Dashboard (one-time US$5 fee).
+2. Upload `lifekit-extension.zip`.
+3. Add screenshots, a description and the privacy policy link (`/privacy`).
+4. In the privacy section, declare that the extension collects no user data.
+
 ## Deployment
 
 The repo includes configuration for both Netlify (`netlify.toml`) and Vercel (`vercel.json`). Each one builds with `npm run build`, publishes `dist/`, falls back to the single-page app for unknown routes, caches hashed assets for a long time, and sets basic security headers.

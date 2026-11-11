@@ -10,6 +10,7 @@ const toc = [
   { id: 'summary', label: 'Summary' },
   { id: 'collect', label: 'Information we collect' },
   { id: 'files', label: 'Files and tool data' },
+  { id: 'extension', label: 'Browser extension' },
   { id: 'contact-form', label: 'Contact form' },
   { id: 'cookies', label: 'Cookies and storage' },
   { id: 'analytics', label: 'Analytics' },
@@ -64,6 +65,15 @@ export default function Privacy() {
       <p>
         The same applies to everything you type into the calculators, text tools, QR code generator and password
         generator. Generated passwords are never stored or transmitted.
+      </p>
+
+      <h2 id="extension">Browser extension</h2>
+      <p>
+        The LifeKit browser extension is a shortcut to the tools on this website. It does not collect, store or
+        transmit any personal data, browsing history or analytics. When you use its right-click options, the selected
+        text or the page or link address is passed to the matching tool on this website in the part of the address
+        after the “#” symbol. Browsers never send that part to the server, so the content stays on your device and is
+        cleared from the address bar once the tool has read it.
       </p>
 
       <h2 id="contact-form">Contact form</h2>

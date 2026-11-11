@@ -3,6 +3,7 @@ import { ArrowDownUp, ArrowUp, CaseLower, CaseSensitive, CaseUpper, Eraser, Head
 import {
   removeDuplicateLines, removeExtraSpaces, reverseLines, reverseText, sortLines, toLower, toSentenceCase, toTitleCase, toUpper,
 } from '../lib/textFormat';
+import { consumeHashParams, readParam } from '../lib/hashParams';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { CopyButton } from '../components/ui/CopyButton';
@@ -31,7 +32,7 @@ const areaCls =
   'min-h-[260px] w-full resize-y rounded-xl border border-line bg-surface-2 p-4 font-mono text-sm leading-relaxed text-fg placeholder:text-fg-subtle focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/15';
 
 export default function TextFormatter() {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(() => readParam(consumeHashParams(), 'text') ?? '');
   const [output, setOutput] = useState('');
   const [last, setLast] = useState<string | null>(null);
   const [history, setHistory] = useState<string[]>([]);

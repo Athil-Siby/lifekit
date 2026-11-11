@@ -1,13 +1,14 @@
 import { useDeferredValue, useMemo, useState } from 'react';
 import { Eraser } from 'lucide-react';
 import { formatDuration, getTextStats } from '../lib/textStats';
+import { consumeHashParams, readParam } from '../lib/hashParams';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { CopyButton } from '../components/ui/CopyButton';
 import { Stat } from '../components/ui/Misc';
 
 export default function WordCounter() {
-  const [text, setText] = useState('');
+  const [text, setText] = useState(() => readParam(consumeHashParams(), 'text') ?? '');
   const deferred = useDeferredValue(text);
   const s = useMemo(() => getTextStats(deferred), [deferred]);
 
