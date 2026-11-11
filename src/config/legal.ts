@@ -11,9 +11,9 @@ export const legalConfig = {
    * The person or business legally responsible for the site, e.g. "Jane Doe" or "Example Ltd".
    * Leave empty to refer to "the operator of LifeKit".
    */
-  operatorName: '',
+  operatorName: 'Athil Siby',
   /** Optional postal address or jurisdiction line for the operator. */
-  operatorLocation: '',
+  operatorLocation: 'United Arab Emirates',
 };
 
 export const operatorLabel = legalConfig.operatorName || 'the operator of LifeKit';
