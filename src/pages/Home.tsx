@@ -217,7 +217,7 @@ export default function Home() {
               {[
                 { icon: Cpu, title: 'Processed on your device', text: 'PDF and image tools use JavaScript running in your browser tab.' },
                 { icon: Ban, title: 'No file storage', text: 'Files are held in memory only while you use them, then released.' },
-                { icon: ShieldCheck, title: 'No accounts or tracking profiles', text: 'There is nothing to sign up for, and we do not run analytics today.' },
+                { icon: ShieldCheck, title: 'No accounts or tracking profiles', text: 'There is nothing to sign up for. We only count anonymous page visits, without cookies.' },
               ].map(({ icon: Icon, title, text }) => (
                 <li key={title} className="flex gap-4 rounded-2xl bg-white/5 p-4 dark:bg-surface">
                   <Icon className="mt-0.5 h-5 w-5 shrink-0 text-emerald-400" aria-hidden />

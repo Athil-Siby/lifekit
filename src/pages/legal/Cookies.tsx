@@ -69,7 +69,8 @@ export default function Cookies() {
         </p>
       ) : (
         <p>
-          We do not currently use analytics or advertising cookies. If we add them, for example Google AdSense, we will
+          We use Vercel Web Analytics to count visits, which works without cookies or local storage. We do not
+          currently use advertising cookies. If we add them, for example Google AdSense, we will
           update this policy with a list of the cookies involved, and visitors in regions where consent is required
           will be asked for permission before any non-essential cookies are set.
         </p>

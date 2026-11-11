@@ -34,7 +34,7 @@ export default function Privacy() {
         <li>Files you open in the PDF and image tools are processed in your browser and are <strong>not uploaded</strong> to our servers.</li>
         <li>Text, numbers and passwords you enter into tools stay in your browser and are not sent to us.</li>
         <li>We store a few preferences (such as light or dark theme) in your browser’s local storage.</li>
-        <li>We do not currently use analytics. {adsConfig.enabled ? 'Advertising is shown only if you consent.' : 'We do not currently show advertising.'}</li>
+        <li>We count anonymous page visits with a cookieless analytics service to see which tools are useful. {adsConfig.enabled ? 'Advertising is shown only if you consent.' : 'We do not currently show advertising.'}</li>
       </ul>
 
       <h2 id="collect">Information we collect</h2>
@@ -99,9 +99,16 @@ export default function Privacy() {
 
       <h2 id="analytics">Analytics</h2>
       <p>
-        We do not currently use any analytics or tracking tools. If we add analytics in the future, we will update
-        this policy first, describe the provider and the data involved, and ask for your consent where the law
-        requires it.
+        We use <strong>Vercel Web Analytics</strong>, provided by our hosting company Vercel, to understand how many
+        people visit LifeKit and which pages are popular. It records the page you visited, the referring website,
+        your approximate country, and your browser, operating system and device type. It does not use cookies,
+        does not store your IP address, and does not build a profile of you or follow you across other websites.
+        Visitors are counted in aggregate, so we cannot see who you are. Content you enter into the tools, and your
+        files, are never sent to the analytics service. Learn more in{' '}
+        <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">
+          Vercel's analytics privacy documentation
+        </a>
+        .
       </p>
 
       <h2 id="advertising">Advertising</h2>
@@ -134,6 +141,7 @@ export default function Privacy() {
       <h2 id="third-parties">Third-party services</h2>
       <ul>
         <li><strong>Hosting and content delivery</strong> – to serve the website’s files to your browser.</li>
+        <li><strong>Vercel Web Analytics</strong> – cookieless, aggregate visit statistics.</li>
         {siteConfig.contactEndpoint && <li><strong>Form processing</strong> – to deliver contact-form messages to us.</li>}
         {adsConfig.enabled && <li><strong>Google AdSense</strong> – to show ads, only with your consent.</li>}
       </ul>

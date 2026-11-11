@@ -10,7 +10,7 @@ export const siteConfig = {
   /** Public URL without trailing slash, e.g. https://www.example.com. Used for canonical and Open Graph URLs. */
   url: (import.meta.env.VITE_SITE_URL ?? '').replace(/\/+$/, ''),
   /** Optional public contact address shown on the contact page. Leave unset to hide it. */
-    contactEmail: import.meta.env.VITE_CONTACT_EMAIL || 'athilsiby@gmail.com',
+  contactEmail: import.meta.env.VITE_CONTACT_EMAIL || 'athilsiby@gmail.com',
   /** Optional form endpoint (Formspree-compatible: accepts JSON POST). Leave unset to disable sending. */
   contactEndpoint: import.meta.env.VITE_CONTACT_ENDPOINT ?? '',
 } as const;
