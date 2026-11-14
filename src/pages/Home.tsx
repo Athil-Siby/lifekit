@@ -77,26 +77,25 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle_at_1px_1px,var(--line)_1px,transparent_0)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_70%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[520px] [background:radial-gradient(60%_60%_at_50%_0%,color-mix(in_srgb,var(--accent)_16%,transparent),transparent_70%)]"
         />
         <div className="container-page relative pb-16 pt-14 text-center sm:pb-24 sm:pt-24">
-          <p className="mx-auto inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 text-xs font-medium text-fg-muted shadow-sm">
+          <p className="mx-auto inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 text-xs font-medium text-fg-muted">
             <ShieldCheck className="h-3.5 w-3.5 text-success" aria-hidden />
             {tools.length} free tools · Files never leave your device
           </p>
-          <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-bold tracking-tight text-fg sm:text-6xl sm:leading-[1.05]">
-            Everything You Need, <span className="text-accent-text">All in One Place.</span>
+          <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-semibold tracking-tight text-fg sm:text-6xl sm:leading-[1.05]">
+            Everyday tools,<br className="hidden sm:block" /> <span className="text-accent-text">beautifully simple.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-fg-muted">
-            LifeKit brings together the everyday tools you reach for: merge PDFs, shrink photos, create QR codes and
-            strong passwords, convert units and time zones, and tidy up text. Fast, free and private by design.
+            PDFs, photos, calculators, timers, notes and more. Free, fast, and private: your files never leave your device.
           </p>
           <div className="mx-auto mt-9 max-w-2xl">
             <SearchBar />
           </div>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-sm">
             <span className="text-fg-subtle">Try:</span>
-            {['pdf-merger', 'image-compressor', 'qr-code-generator', 'password-generator'].map((slug) => {
+            {['pdf-to-word', 'compress-image-to-kb', 'calculator', 'image-resizer'].map((slug) => {
               const t = tools.find((x) => x.slug === slug)!;
               return (
                 <Link key={slug} to={`/tools/${slug}`} className="rounded-full border border-line bg-surface px-3 py-1 text-fg-muted transition-colors hover:border-line-strong hover:text-fg">
@@ -112,7 +111,7 @@ export default function Home() {
       <section className="container-page" aria-labelledby="popular-heading">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <h2 id="popular-heading" className="text-2xl font-bold tracking-tight text-fg">Popular tools</h2>
+            <h2 id="popular-heading" className="text-2xl font-semibold tracking-tight text-fg">Popular tools</h2>
             <p className="mt-1 text-fg-muted">The tools people use most, one click away.</p>
           </div>
           <Link to="/tools" className="hidden items-center gap-1 text-sm font-medium text-accent-text hover:underline sm:inline-flex">
@@ -128,7 +127,7 @@ export default function Home() {
 
       {/* Categories */}
       <section className="container-page mt-20" aria-labelledby="categories-heading">
-        <h2 id="categories-heading" className="text-2xl font-bold tracking-tight text-fg">Browse by category</h2>
+        <h2 id="categories-heading" className="text-2xl font-semibold tracking-tight text-fg">Browse by category</h2>
         <p className="mt-1 text-fg-muted">Find the right tool by what you are working with.</p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((c) => {
@@ -137,7 +136,7 @@ export default function Home() {
               <Link
                 key={c.id}
                 to={`/tools?category=${c.id}`}
-                className="group flex items-center gap-4 rounded-2xl border border-line bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-line-strong hover:shadow-lg hover:shadow-black/[0.04]"
+                className="group flex items-center gap-4 rounded-2xl border border-line bg-surface p-5 transition-all hover:border-accent/50 hover:bg-surface-2"
               >
                 <ToolIcon name={c.icon} category={c.id} size="lg" />
                 <div className="min-w-0 flex-1">
@@ -158,7 +157,7 @@ export default function Home() {
 
       {/* Directory */}
       <section className="container-page mt-20" aria-labelledby="all-heading">
-        <h2 id="all-heading" className="text-2xl font-bold tracking-tight text-fg">All tools</h2>
+        <h2 id="all-heading" className="text-2xl font-semibold tracking-tight text-fg">All tools</h2>
         <p className="mt-1 text-fg-muted">Every LifeKit tool, grouped by category.</p>
         <div className="mt-8 space-y-10">
           {categories.map((c) => (
@@ -183,7 +182,7 @@ export default function Home() {
       <section className="container-page mt-24" aria-labelledby="guides-heading">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <h2 id="guides-heading" className="text-2xl font-bold tracking-tight text-fg">Helpful guides</h2>
+            <h2 id="guides-heading" className="text-2xl font-semibold tracking-tight text-fg">Helpful guides</h2>
             <p className="mt-1 text-fg-muted">Quick how-tos for everyday digital tasks.</p>
           </div>
           <Link to="/guides" className="hidden items-center gap-1 text-sm font-medium text-accent-text hover:underline sm:inline-flex">
@@ -200,7 +199,7 @@ export default function Home() {
       {/* Why */}
       <section className="container-page mt-24" aria-labelledby="why-heading">
         <div className="text-center">
-          <h2 id="why-heading" className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">Why choose LifeKit</h2>
+          <h2 id="why-heading" className="text-2xl font-semibold tracking-tight text-fg sm:text-3xl">Why choose LifeKit</h2>
           <p className="mx-auto mt-2 max-w-xl text-fg-muted">Simple tools that do one job well, without the usual friction.</p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -224,7 +223,7 @@ export default function Home() {
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
                 <Lock className="h-6 w-6" aria-hidden />
               </span>
-              <h2 id="privacy-heading" className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl">Privacy built in, not bolted on</h2>
+              <h2 id="privacy-heading" className="mt-5 text-2xl font-semibold tracking-tight sm:text-3xl">Privacy built in, not bolted on</h2>
               <p className="mt-3 leading-relaxed text-slate-300 dark:text-fg-muted">
                 Most online converters upload your documents to their servers. LifeKit does the work inside your
                 browser instead, so contracts, IDs, photos and passwords never leave your device.
@@ -254,7 +253,7 @@ export default function Home() {
 
       {/* FAQ */}
       <section className="container-page mt-24 max-w-3xl" aria-labelledby="faq-heading">
-        <h2 id="faq-heading" className="text-center text-2xl font-bold tracking-tight text-fg sm:text-3xl">Frequently asked questions</h2>
+        <h2 id="faq-heading" className="text-center text-2xl font-semibold tracking-tight text-fg sm:text-3xl">Frequently asked questions</h2>
         <div className="mt-8">
           <FaqList items={homeFaqs} />
         </div>

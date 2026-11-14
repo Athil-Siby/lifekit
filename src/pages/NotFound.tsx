@@ -11,7 +11,7 @@ export default function NotFound() {
       <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-surface-3 text-fg-subtle">
         <Compass className="h-7 w-7" aria-hidden />
       </span>
-      <h1 className="mt-6 text-3xl font-bold tracking-tight text-fg">Page not found</h1>
+      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-fg">Page not found</h1>
       <p className="mt-2 max-w-md text-fg-muted">The page may have moved or the link might be mistyped. Try searching for the tool you need.</p>
       <div className="mt-8 w-full max-w-lg">
         <SearchBar size="md" />

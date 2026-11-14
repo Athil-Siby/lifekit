@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     target: 'es2022',
-    chunkSizeWarningLimit: 900,
+    chunkSizeWarningLimit: 1400,
   },
   test: {
     environment: 'node',

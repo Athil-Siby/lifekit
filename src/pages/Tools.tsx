@@ -47,7 +47,7 @@ export default function Tools() {
     <>
       <div className="border-b border-line bg-surface-2">
         <div className="container-page py-12 sm:py-14">
-          <h1 className="text-3xl font-bold tracking-tight text-fg sm:text-4xl">{activeCategory ? activeCategory.name : 'All tools'}</h1>
+          <h1 className="text-3xl font-semibold tracking-tight text-fg sm:text-4xl">{activeCategory ? activeCategory.name : 'All tools'}</h1>
           <p className="mt-2 max-w-2xl text-fg-muted">
             {activeCategory
               ? activeCategory.description

@@ -76,12 +76,17 @@ export default function ToolPage() {
           <div className="flex items-start gap-4">
             <ToolIcon name={tool.icon} category={tool.category} size="lg" />
             <div>
-              <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{tool.name}</h1>
+              <h1 className="text-2xl font-semibold tracking-tight text-fg sm:text-3xl">{tool.name}</h1>
               <p className="mt-2 max-w-2xl text-fg-muted">{tool.intro}</p>
             </div>
           </div>
           <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-medium text-fg-muted">
-            {tool.handlesFiles ? (
+            {tool.privacyNote ? (
+              <>
+                <Lock className="h-3.5 w-3.5 text-success" aria-hidden />
+                {tool.privacyNote}
+              </>
+            ) : tool.handlesFiles ? (
               <>
                 <ShieldCheck className="h-4 w-4 text-success" aria-hidden />
                 Files are processed locally in your browser and are never uploaded.

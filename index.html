@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#110e19" />
     <title>LifeKit – Free Everyday Tools, All in One Place</title>
     <meta name="description" content="LifeKit is a free collection of fast, private everyday tools: merge and split PDFs, compress images, generate QR codes and passwords, convert units and more. Files are processed in your browser." />
     <meta property="og:type" content="website" />
@@ -14,11 +14,11 @@
     <meta property="og:image" content="/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <script>
-      // Apply the saved theme before first paint to avoid a flash of the wrong theme.
+      // Apply the saved theme before first paint (dark is the default) to avoid a flash.
       (function () {
         try {
           var t = localStorage.getItem('lifekit:theme');
-          var dark = t === 'dark' || ((t === null || t === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          var dark = t !== 'light' && (t !== 'system' || window.matchMedia('(prefers-color-scheme: dark)').matches);
           if (dark) document.documentElement.classList.add('dark');
         } catch (e) {}
       })();

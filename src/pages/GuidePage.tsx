@@ -57,7 +57,7 @@ export default function GuidePage() {
               <li><Link to="/guides" className="hover:text-fg">Guides</Link></li>
             </ol>
           </nav>
-          <h1 className="text-3xl font-bold tracking-tight text-fg sm:text-4xl">{guide.title}</h1>
+          <h1 className="text-3xl font-semibold tracking-tight text-fg sm:text-4xl">{guide.title}</h1>
           <p className="mt-3 text-lg text-fg-muted">{guide.description}</p>
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-fg-subtle">
             <span className="inline-flex items-center gap-1.5"><CalendarDays className="h-4 w-4" aria-hidden />{formatGuideDate(guide.date)}</span>

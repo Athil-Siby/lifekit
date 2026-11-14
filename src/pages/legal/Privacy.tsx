@@ -52,8 +52,8 @@ export default function Privacy() {
 
       <h2 id="files">Files and tool data</h2>
       <p>
-        The PDF Merger, PDF Splitter, PDF Compressor, Image Compressor and Image Converter work entirely in your
-        browser using JavaScript. When you choose a file, your browser reads it from your device into the page’s
+        All of LifeKit’s file tools (PDF, Word, PowerPoint, image, OCR, signing, hashing and recording tools) work
+        entirely in your browser using JavaScript. When you choose a file, your browser reads it from your device into the page’s
         memory, processes it there, and lets you save the result. The file is not transmitted to LifeKit or any
         third party.
       </p>
@@ -65,6 +65,26 @@ export default function Privacy() {
       <p>
         The same applies to everything you type into the calculators, text tools, QR code generator and password
         generator. Generated passwords are never stored or transmitted.
+      </p>
+      <p>
+        <strong>Saved on your device.</strong> The Notepad, To-Do List, Alarm Clock, Spin the Wheel and Typing Test
+        save your notes, tasks, alarms, options and best score in your browser’s local storage so they are still there
+        next time. This data stays on your device; clearing your browser data deletes it.
+      </p>
+      <p>
+        <strong>Microphone and screen.</strong> The Voice Recorder and Screen Recorder only access your microphone or
+        screen after you allow it in your browser. Recordings are kept in the page’s memory and saved only when you
+        download them; they are never uploaded.
+      </p>
+      <p>
+        <strong>Speech to Text.</strong> This tool uses your browser’s built-in speech recognition. In Google Chrome
+        your audio is sent to Google’s speech service, and in Microsoft Edge to Microsoft’s, under their privacy
+        policies, to turn it into text. LifeKit never receives, stores or sees your audio or the resulting text.
+      </p>
+      <p>
+        <strong>Image to Text (OCR).</strong> The text-recognition engine and its English language data are downloaded
+        from this website the first time you use the tool and cached by your browser. Your images are processed on
+        your device.
       </p>
 
       <h2 id="extension">Browser extension</h2>

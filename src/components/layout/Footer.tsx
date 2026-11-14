@@ -12,7 +12,7 @@ export function Footer() {
         <div className="lg:col-span-2">
           <Link to="/" className="inline-flex items-center gap-2.5">
             <LogoMark />
-            <span className="text-lg font-bold tracking-tight text-fg">LifeKit</span>
+            <span className="text-lg font-semibold tracking-tight text-fg">LifeKit</span>
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-muted">
             Free everyday tools that run in your browser. No account, no clutter, and your files stay on your device.

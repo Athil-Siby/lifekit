@@ -14,3 +14,7 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+declare module 'mammoth/mammoth.browser';
+declare module 'html-to-pdfmake';
+declare module 'pdfmake/build/vfs_fonts';

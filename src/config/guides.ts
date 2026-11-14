@@ -33,6 +33,49 @@ export interface Guide {
 
 export const guides: Guide[] = [
   {
+    slug: 'powerpoint-to-pdf',
+    title: 'How to Convert PowerPoint to PDF (Free, on Any Device)',
+    description:
+      'Turn a PowerPoint (.pptx) into a PDF in under a minute using apps you already have: PowerPoint, Google Slides, Keynote or your phone. Step by step.',
+    date: '2026-11-14',
+    tools: ['pdf-compressor', 'pdf-merger', 'pdf-to-powerpoint'],
+    body: `Sending slides as a PDF is the safest way to share them: the fonts, layout and pictures look the same on every device, and nobody can accidentally edit them. You don't need a converter website for this. The apps you already use can do it, and the result is a perfect copy.
+
+> Why doesn't LifeKit convert PowerPoint to PDF in the browser? Getting slides exactly right needs the full PowerPoint layout engine, and doing it badly would give you broken slides. The apps below do it perfectly and for free.
+
+## On Windows or Mac with PowerPoint
+
+1. Open your presentation in PowerPoint.
+2. Click **File**, then **Save As** (on Mac: **File**, then **Export**).
+3. Choose **PDF** as the file type.
+4. Click **Save**. Done.
+
+## With Google Slides (free, any computer)
+
+1. Go to Google Drive and upload your .pptx file.
+2. Open it with **Google Slides**.
+3. Click **File**, then **Download**, then **PDF document (.pdf)**.
+
+## On a Mac with Keynote
+
+1. Open the .pptx file in Keynote.
+2. Click **File**, then **Export To**, then **PDF**.
+3. Pick the image quality and click **Next**, then **Export**.
+
+## On iPhone or Android
+
+1. Open the file in the free PowerPoint app, Google Slides or Keynote.
+2. Tap the **share** or **three-dot** menu.
+3. Choose **Export**, **Download** or **Print**, then **PDF** (on iPhone, Print and then pinch out on the preview to make a PDF).
+
+## After you have the PDF
+
+- **File too big to email?** Shrink it with the [PDF Compressor](/tools/pdf-compressor).
+- **Need to combine it with other documents?** Use the [PDF Merger](/tools/pdf-merger).
+- **Need slides from a PDF?** Go the other way with [PDF to PowerPoint](/tools/pdf-to-powerpoint).
+`,
+  },
+  {
     slug: 'reduce-pdf-size-for-email',
     title: 'How to Reduce PDF File Size for Email',
     description:

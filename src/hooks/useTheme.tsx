@@ -20,7 +20,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // Stored raw (not JSON) so the inline script in index.html can read it before React loads.
   const [preference, setPref] = useState<ThemePreference>(() => {
     const v = readRaw('theme');
-    return v === 'light' || v === 'dark' ? v : 'system';
+    return v === 'light' || v === 'system' ? v : 'dark';
   });
   const [systemDark, setSystemDark] = useState(systemPrefersDark);
 
@@ -36,7 +36,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle('dark', resolved === 'dark');
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolved === 'dark' ? '#0b0f17' : '#ffffff');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolved === 'dark' ? '#110e19' : '#faf8ff');
   }, [resolved]);
 
   const setPreference = useCallback((p: ThemePreference) => {

@@ -32,6 +32,13 @@ if (!/^(https:\/\/[^/]+|http:\/\/localhost(:\d+)?)$/.test(site)) {
 
 const { tools, categories } = await import(join(root, 'src/config/tools.ts'));
 const emoji = {
+  'image-resizer': '📐', 'crop-image': '✂️', 'compress-image-to-kb': '🗜️', 'image-to-text': '🔤', 'color-picker': '🎨', 'sign-pdf': '✍️', 'pdf-page-numbers': '🔢', 'watermark-pdf': '💧',
+  'speech-to-text': '🎙️', notepad: '🗒️', 'todo-list': '✅', 'text-compare': '🆚', 'lorem-ipsum-generator': '📃', 'typing-test': '⌨️', 'spin-the-wheel': '🎡', 'random-number-generator': '🎲',
+  'barcode-generator': '▮', 'scientific-calculator': '🧪', 'sip-calculator': '📈', 'compound-interest-calculator': '🐷', 'gst-calculator': '🧾', 'cgpa-to-percentage': '🎓', 'calorie-calculator': '🔥',
+  'json-formatter': '{}', 'base64-encoder': '🔣', 'hash-generator': '#️⃣', 'uuid-generator': '🆔', 'screen-recorder': '🖥️', 'voice-recorder': '🎤',
+  'pdf-to-word': '📝', 'word-to-pdf': '📄', 'pdf-to-powerpoint': '📊', 'images-to-pdf': '🖼️', 'pdf-to-images': '🏞️', 'organize-pdf': '🔄',
+  calculator: '🧮', 'discount-calculator': '🏷️', 'tip-calculator': '🧾', 'bmi-calculator': '⚖️', 'loan-calculator': '🏦', 'gpa-calculator': '🎓',
+  'date-calculator': '📅', timer: '⏲️', stopwatch: '⏱️', 'alarm-clock': '⏰', 'pomodoro-timer': '🍅', 'text-to-speech': '🔊',
   'pdf-merger': '📑', 'pdf-splitter': '✂️', 'pdf-compressor': '🗜️', 'image-compressor': '🖼️', 'image-converter': '🔁',
   'qr-code-generator': '🔳', 'password-generator': '🔑', 'unit-converter': '📏', 'word-counter': '🔤',
   'percentage-calculator': '％', 'age-calculator': '🎂', 'time-zone-converter': '🌍', 'text-formatter': '🅰️',

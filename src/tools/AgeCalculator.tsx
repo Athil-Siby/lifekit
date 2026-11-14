@@ -57,7 +57,7 @@ export default function AgeCalculator() {
           <div className="space-y-4">
             <Card className="p-6">
               <p className="text-sm text-fg-muted">{isToday ? 'Age today' : `Age on ${fmtDate(on)}`}</p>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-fg sm:text-4xl">
+              <p className="mt-2 text-3xl font-semibold tracking-tight text-fg sm:text-4xl">
                 <span className="text-accent-text">{result.years}</span> year{result.years === 1 ? '' : 's'},{' '}
                 <span className="text-accent-text">{result.months}</span> month{result.months === 1 ? '' : 's'},{' '}
                 <span className="text-accent-text">{result.days}</span> day{result.days === 1 ? '' : 's'}

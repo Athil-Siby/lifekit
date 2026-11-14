@@ -6,7 +6,7 @@
  */
 export const legalConfig = {
   /** Shown as "Last updated" on each legal page. */
-  lastUpdated: '11 November 2026',
+  lastUpdated: '14 November 2026',
   /**
    * The person or business legally responsible for the site, e.g. "Jane Doe" or "Example Ltd".
    * Leave empty to refer to "the operator of LifeKit".

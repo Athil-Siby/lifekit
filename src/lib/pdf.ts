@@ -200,3 +200,108 @@ export async function rasterCompressPdf(
     await handle.destroy();
   }
 }
+
+// ---------- Images → PDF, PDF → images, organise pages ----------
+
+export type PageSizeOption = 'fit' | 'a4' | 'letter';
+export type OrientationOption = 'auto' | 'portrait' | 'landscape';
+
+const PAGE_SIZES = { a4: [595.28, 841.89], letter: [612, 792] } as const;
+
+/** Combine images into a PDF, one image per page. */
+export async function imagesToPdf(
+  images: { file: File; decode: () => Promise<{ source: CanvasImageSource; width: number; height: number; release: () => void }> }[],
+  opts: { size: PageSizeOption; orientation: OrientationOption; margin: number },
+  onProgress?: (done: number, total: number) => void,
+): Promise<Blob> {
+  const { PDFDocument } = await pdfLib();
+  const out = await PDFDocument.create();
+  for (let i = 0; i < images.length; i++) {
+    const img = await images[i].decode();
+    try {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new PdfError('Your browser could not create a drawing canvas.');
+      const isPng = images[i].file.type === 'image/png';
+      if (!isPng) {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, img.width, img.height);
+      }
+      ctx.drawImage(img.source, 0, 0);
+      const blob = await canvasToBlob(canvas, isPng ? 'image/png' : 'image/jpeg', 0.92);
+      canvas.width = 0;
+      canvas.height = 0;
+      const bytes = await blob.arrayBuffer();
+      const embedded = isPng ? await out.embedPng(bytes) : await out.embedJpg(bytes);
+      // Image size in points, assuming 96 DPI for "fit" pages.
+      const iw = (img.width * 72) / 96;
+      const ih = (img.height * 72) / 96;
+      let pw: number;
+      let ph: number;
+      if (opts.size === 'fit') {
+        pw = iw + opts.margin * 2;
+        ph = ih + opts.margin * 2;
+      } else {
+        const [sw, sh] = PAGE_SIZES[opts.size];
+        const landscape = opts.orientation === 'landscape' || (opts.orientation === 'auto' && img.width > img.height);
+        [pw, ph] = landscape ? [sh, sw] : [sw, sh];
+      }
+      const availW = pw - opts.margin * 2;
+      const availH = ph - opts.margin * 2;
+      const scale = opts.size === 'fit' ? 1 : Math.min(availW / iw, availH / ih);
+      const w = iw * scale;
+      const h = ih * scale;
+      const page = out.addPage([pw, ph]);
+      page.drawImage(embedded, { x: (pw - w) / 2, y: (ph - h) / 2, width: w, height: h });
+    } finally {
+      img.release();
+    }
+    onProgress?.(i + 1, images.length);
+  }
+  out.setProducer('LifeKit');
+  return toBlob(await out.save({ useObjectStreams: true }));
+}
+
+/** Render every page (or selected pages) of a PDF to JPG or PNG images. */
+export async function pdfToImages(
+  file: File,
+  opts: { format: 'image/jpeg' | 'image/png'; dpi: number; pages?: number[] },
+  onProgress?: (done: number, total: number) => void,
+): Promise<{ name: string; blob: Blob; page: number }[]> {
+  const handle = await openForRendering(file);
+  try {
+    const { doc } = handle;
+    const pages = opts.pages?.length ? opts.pages : Array.from({ length: doc.numPages }, (_, i) => i + 1);
+    const base = file.name.replace(/\.pdf$/i, '') || 'page';
+    const ext = opts.format === 'image/png' ? 'png' : 'jpg';
+    const pad = String(doc.numPages).length;
+    const out: { name: string; blob: Blob; page: number }[] = [];
+    for (let i = 0; i < pages.length; i++) {
+      const canvas = await renderPage(doc, pages[i], opts.dpi / 72);
+      const blob = await canvasToBlob(canvas, opts.format, 0.9);
+      canvas.width = 0;
+      canvas.height = 0;
+      out.push({ name: `${base}-page${String(pages[i]).padStart(pad, '0')}.${ext}`, blob, page: pages[i] });
+      onProgress?.(i + 1, pages.length);
+    }
+    return out;
+  } finally {
+    await handle.destroy();
+  }
+}
+
+/** Build a new PDF from pages in a new order, each with an added rotation (0/90/180/270). */
+export async function organizePdf(src: PDFDocumentType, pages: { index: number; rotate: number }[]): Promise<Blob> {
+  const { PDFDocument, degrees } = await pdfLib();
+  const out = await PDFDocument.create();
+  const copied = await out.copyPages(src, pages.map((p) => p.index));
+  copied.forEach((pg, i) => {
+    const current = pg.getRotation().angle;
+    pg.setRotation(degrees((((current + pages[i].rotate) % 360) + 360) % 360));
+    out.addPage(pg);
+  });
+  out.setProducer('LifeKit');
+  return toBlob(await out.save({ useObjectStreams: true }));
+}

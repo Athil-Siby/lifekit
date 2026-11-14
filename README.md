@@ -1,14 +1,17 @@
 # LifeKit
 
-LifeKit is a set of 14 free everyday tools. Each one runs in the visitor's browser: PDF and image files are processed on their device and never uploaded.
+LifeKit is a set of 61 free everyday tools. Each one runs in the visitor's browser: PDF and image files are processed on their device and never uploaded.
 
 | Category | Tools |
 | --- | --- |
-| PDF | PDF Merger, PDF Splitter, PDF Compressor |
-| Images | Image Compressor, Image Converter |
-| Generators | QR Code Generator, Password Generator |
-| Calculators & converters | Unit Converter, Word & Character Counter, Percentage Calculator, Age Calculator, Time Zone Converter |
-| Text | Text Formatting Tools |
+| PDF & Documents | PDF Merger, Splitter, Compressor, PDF to Word, Word to PDF, PDF to PowerPoint, Images to PDF, PDF to Images, Rotate & Organize, Sign PDF, Page Numbers, Watermark |
+| Images | Image Compressor, Converter, Resizer, Crop & Rotate, Compress to KB, Image to Text (OCR), Color Picker |
+| Generators | QR Code, Password, Barcode, Random Number, Spin the Wheel |
+| Calculators & converters | Calculator, Scientific, Discount, Tip, BMI, Calorie, Loan/EMI, SIP, Compound Interest, GST, GPA, CGPA to %, Date, Percentage, Age, Unit Converter, Word Counter, Time Zone |
+| Time & Timers | Timer, Stopwatch, Alarm Clock, Pomodoro |
+| Text & Writing | Text Formatter, Text to Speech, Speech to Text, Notepad, To-Do List, Text Compare, Lorem Ipsum, Typing Test |
+| Audio & Video | Screen Recorder, Voice Recorder |
+| Developer | JSON Formatter, Base64/URL Encoder, Hash Generator, UUID Generator |
 | Files | File Size Calculator |
 
 The site also has a home page, a searchable tools directory, About and Contact pages, and Privacy, Terms and Cookie policy pages. It supports light and dark themes and works at phone width.
@@ -22,7 +25,11 @@ React 19, TypeScript, Vite, Tailwind CSS v4, React Router and Lucide icons.
 | `pdf-lib` | Merging, splitting and rebuilding PDFs |
 | `pdfjs-dist` | Rendering PDF pages (thumbnails, image-based compression) |
 | `qrcode` | QR code generation (PNG and SVG) |
-| `fflate` | ZIP download for split PDFs |
+| `fflate` | ZIP downloads and building .docx files |
+| `pptxgenjs` | PDF to PowerPoint |
+| `tesseract.js` + `@tesseract.js-data/eng` | Image to Text (OCR). `scripts/copy-ocr-assets.mjs` copies the engine into `public/ocr` before `dev`/`build`, so it's served from your own domain |
+| `jsbarcode` | Barcode Generator |
+| `mammoth`, `html-to-pdfmake`, `pdfmake` | Word to PDF |
 | `@fontsource-variable/inter` | Self-hosted Inter font, so no third-party font requests |
 | `vitest` (dev) | Unit tests |
 
@@ -167,3 +174,14 @@ Edit the code or content (most copy lives in `src/config/tools.ts` and `src/page
 - **PDF merging** keeps page content but may drop bookmarks and interactive form fields.
 - **Image formats:** input is limited to what the browser can decode, which usually rules out HEIC. Output is JPG, PNG or WebP. Animated GIFs keep only their first frame.
 - **Time zones** use the browser's built-in IANA time-zone database.
+- **PDF to Word** extracts text, paragraphs and headings only (no images, columns or tables). Scanned PDFs have no text and are rejected with a clear message.
+- **PDF to PowerPoint** makes one picture per slide, so slide text isn't editable.
+- **Word to PDF** accepts .docx only and keeps basic formatting (headings, emphasis, lists, tables, PNG/JPG images), not the exact page layout.
+- **PowerPoint to PDF** isn't possible in the browser with good quality; a guide explains how to do it with free apps.
+- **Timer, alarm clock and Pomodoro** only ring while the tab is open, and some phones pause pages when the screen locks.
+- **Text to speech** uses the device's built-in voices and can't save audio files.
+- **Speech to text** uses the browser's speech service (Google in Chrome, Microsoft in Edge), so audio leaves the device; the tool page and privacy policy say so. Firefox isn't supported.
+- **Screen recorder** works on desktop browsers only (mobile browsers don't allow screen capture).
+- **Sign PDF** places an image of a signature; it is not a certified digital signature.
+- **Image to Text** reads printed English best.
+- The site's `Permissions-Policy` header allows the microphone and screen capture for this site only (`microphone=(self), display-capture=(self)`), which the recorders and speech-to-text need.

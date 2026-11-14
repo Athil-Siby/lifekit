@@ -6,22 +6,22 @@
 /* Semantic design tokens. Components use these via Tailwind classes such as
    bg-surface, text-fg-muted, border-line, bg-accent. */
 :root {
-  --bg: #ffffff;
+  --bg: #faf8ff;
   --surface: #ffffff;
-  --surface-2: #f8fafc;
-  --surface-3: #f1f5f9;
-  --line: #e2e8f0;
-  --line-strong: #cbd5e1;
-  --fg: #0f172a;
-  --fg-muted: #475569;
-  --fg-subtle: #64748b;
-  --accent: #4f46e5;
-  --accent-hover: #4338ca;
-  --accent-soft: #eef2ff;
+  --surface-2: #f6f3fd;
+  --surface-3: #eee9fa;
+  --line: #e7e1f4;
+  --line-strong: #d4cbeb;
+  --fg: #1d1730;
+  --fg-muted: #5a5272;
+  --fg-subtle: #6f6789;
+  --accent: #7457d6;
+  --accent-hover: #6545c7;
+  --accent-soft: #f1ecff;
   --accent-fg: #ffffff;
-  --accent-text: #4338ca;
+  --accent-text: #5f3fc4;
   --success: #15803d;
-  --success-soft: #f0fdf4;
+  --success-soft: #effcf3;
   --danger: #b91c1c;
   --danger-soft: #fef2f2;
   --warning: #a16207;
@@ -30,26 +30,26 @@
 }
 
 .dark {
-  --bg: #0b0f17;
-  --surface: #111723;
-  --surface-2: #151c2a;
-  --surface-3: #1c2433;
-  --line: #243044;
-  --line-strong: #334158;
-  --fg: #e8edf5;
-  --fg-muted: #a3afc2;
-  --fg-subtle: #8492a8;
-  --accent: #6366f1;
-  --accent-hover: #818cf8;
-  --accent-soft: #1e1f3d;
-  --accent-fg: #ffffff;
-  --accent-text: #a5b4fc;
-  --success: #4ade80;
-  --success-soft: #0f2a1b;
-  --danger: #f87171;
-  --danger-soft: #2d1416;
-  --warning: #facc15;
-  --warning-soft: #2a2410;
+  --bg: #110e19;
+  --surface: #181424;
+  --surface-2: #1e192d;
+  --surface-3: #272038;
+  --line: #2c2541;
+  --line-strong: #3d3458;
+  --fg: #f1edfc;
+  --fg-muted: #b8afd1;
+  --fg-subtle: #938aae;
+  --accent: #b7a3ff;
+  --accent-hover: #c9baff;
+  --accent-soft: #261f3d;
+  --accent-fg: #170f2c;
+  --accent-text: #c4b3ff;
+  --success: #6ee7a0;
+  --success-soft: #11261c;
+  --danger: #fb8b8b;
+  --danger-soft: #2c1520;
+  --warning: #f6d365;
+  --warning-soft: #29220f;
   color-scheme: dark;
 }
 

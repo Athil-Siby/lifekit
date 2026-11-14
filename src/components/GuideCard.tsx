@@ -7,7 +7,7 @@ export function GuideCard({ guide }: { guide: Guide }) {
   return (
     <Link
       to={`/guides/${guide.slug}`}
-      className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-lg hover:shadow-black/[0.04]"
+      className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-5 transition-all duration-200 hover:border-accent/50 hover:bg-surface-2"
     >
       <span className="inline-flex items-center gap-1.5 text-xs font-medium text-fg-subtle">
         <BookOpen className="h-3.5 w-3.5" aria-hidden /> Guide · {readingMinutes(guide.body)} min read
