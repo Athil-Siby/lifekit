@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { categories, tools } from '../../config/tools';
 import { useConsent } from '../../hooks/useConsent';
 import { LogoMark } from '../Logo';
+import { siteConfig } from '../../config/site';
 
 export function Footer() {
   const { required, openSettings } = useConsent();
@@ -17,6 +18,12 @@ export function Footer() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-muted">
             Free everyday tools that run in your browser. No account, no clutter, and your files stay on your device.
           </p>
+          {siteConfig.instagram && (
+            <a href={siteConfig.instagram} target="_blank" rel="noopener noreferrer me" className="mt-4 inline-flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-sm text-fg-muted hover:border-accent/50 hover:text-fg">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg>
+              Follow on Instagram
+            </a>
+          )}
         </div>
         <div>
           <h2 className="text-sm font-semibold text-fg">Popular tools</h2>

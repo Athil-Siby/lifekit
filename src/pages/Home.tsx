@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Ban, Cpu, Gift, Lock, ShieldCheck, Smartphone, UserX, Zap } from 'lucide-react';
-import { categories, tools } from '../config/tools';
+import { categories, tools, toolsBySlug } from '../config/tools';
+import { recentTools } from '../lib/recent';
 import { staticPages } from '../config/pages';
 import { useSeo } from '../hooks/useSeo';
 import { absoluteUrl } from '../config/site';
@@ -70,6 +72,8 @@ export default function Home() {
   });
 
   const popular = tools.filter((t) => t.badge === 'popular');
+  const [recent, setRecent] = useState<string[]>([]);
+  useEffect(() => setRecent(recentTools().filter((x) => toolsBySlug[x]).slice(0, 6)), []);
 
   return (
     <>
@@ -106,6 +110,19 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {recent.length > 0 && (
+        <section className="container-page mb-14" aria-labelledby="recent-heading">
+          <h2 id="recent-heading" className="text-lg font-semibold text-fg">Recently used</h2>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {recent.map((slug) => (
+              <Link key={slug} to={`/tools/${slug}`} className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-sm text-fg-muted hover:border-accent/50 hover:text-fg">
+                <ToolIcon name={toolsBySlug[slug].icon} category={toolsBySlug[slug].category} size="sm" className="h-6 w-6 rounded-md" /> {toolsBySlug[slug].name}
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Popular */}
       <section className="container-page" aria-labelledby="popular-heading">

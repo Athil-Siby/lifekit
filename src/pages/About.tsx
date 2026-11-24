@@ -3,6 +3,7 @@ import { Accessibility, Gauge, Heart, ShieldCheck } from 'lucide-react';
 import { useSeo } from '../hooks/useSeo';
 import { staticPages } from '../config/pages';
 import { tools } from '../config/tools';
+import { legalConfig } from '../config/legal';
 import { PageHeader } from '../components/PageHeader';
 import { buttonClasses } from '../components/ui/Button';
 
@@ -37,6 +38,14 @@ export default function About() {
             tools run on your device. That makes them faster, keeps your data private, and means there is nothing to
             sign up for.
           </p>
+          <h2>Who makes LifeKit</h2>
+          <p>
+            LifeKit is built and run by {legalConfig.operatorName || 'an independent developer'}
+            {legalConfig.operatorLocation ? ` from ${legalConfig.operatorLocation}` : ''}. It started as a personal
+            project to replace the dozen sketchy websites students and families end up using for small everyday jobs:
+            shrinking a photo to 20 KB for an exam form, turning a PDF into Word, working out CGPA, or signing a document
+            without a printer. Every tool is tested by hand, and feedback from real users decides what gets built next.
+          </p>
           <h2>Our mission</h2>
           <p>
             To be the place people bookmark for everyday digital chores: a calm, reliable toolkit that respects their
@@ -56,9 +65,9 @@ export default function About() {
         <div className="prose-lk mt-4 max-w-3xl">
           <h2>How LifeKit is funded</h2>
           <p>
-            LifeKit is free to use. To cover hosting and development we may introduce clearly labelled advertising in
-            the future, and possibly optional extras. Core tools will stay free, and ads will never be placed inside a
-            tool’s controls where they could be clicked by accident.
+            LifeKit is free to use. To keep it that way it may show clearly labelled advertising. Ads only appear between sections
+            of a page, never inside a tool’s controls where they could be clicked by accident, and the tools themselves
+            will always stay free.
           </p>
           <h2>Get in touch</h2>
           <p>

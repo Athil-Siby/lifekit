@@ -1,17 +1,18 @@
 # LifeKit
 
-LifeKit is a set of 61 free everyday tools. Each one runs in the visitor's browser: PDF and image files are processed on their device and never uploaded.
+LifeKit is a set of 90 free everyday tools. Each one runs in the visitor's browser: PDF and image files are processed on their device and never uploaded.
 
 | Category | Tools |
 | --- | --- |
-| PDF & Documents | PDF Merger, Splitter, Compressor, PDF to Word, Word to PDF, PDF to PowerPoint, Images to PDF, PDF to Images, Rotate & Organize, Sign PDF, Page Numbers, Watermark |
-| Images | Image Compressor, Converter, Resizer, Crop & Rotate, Compress to KB, Image to Text (OCR), Color Picker |
-| Generators | QR Code, Password, Barcode, Random Number, Spin the Wheel |
-| Calculators & converters | Calculator, Scientific, Discount, Tip, BMI, Calorie, Loan/EMI, SIP, Compound Interest, GST, GPA, CGPA to %, Date, Percentage, Age, Unit Converter, Word Counter, Time Zone |
-| Time & Timers | Timer, Stopwatch, Alarm Clock, Pomodoro |
-| Text & Writing | Text Formatter, Text to Speech, Speech to Text, Notepad, To-Do List, Text Compare, Lorem Ipsum, Typing Test |
+| PDF & Documents | PDF Merger, Splitter, Compressor, Compress PDF to KB, PDF to Word, Word to PDF, PDF to PowerPoint, Images to PDF, PDF to Images, Rotate & Organize, Sign PDF, Page Numbers, Watermark, Invoice Generator, Resume Builder |
+| Images | Compressor, Converter, Resizer, Crop & Rotate, Compress to KB, Image to Text (OCR), Colour Picker, Passport Photo Maker, HEIC to JPG, Add Text to Image, Collage Maker, Instagram Grid Maker, Blur & Hide Info |
+| Generators | QR Code, QR Code Scanner, Password, Barcode, WhatsApp Link |
+| Calculators | Calculator, Scientific, Discount, Tip, BMI, Calorie, Sleep, Loan/EMI, SIP, Compound Interest, FD & RD, GST, Income Tax (India), Fuel Cost, GPA, CGPA to %, Marks %, Attendance, Date, Percentage, Age, Number to Words, Unit Converter, Word Counter, Time Zone |
+| Time | Timer, Stopwatch, Alarm Clock, Pomodoro, Countdown to Date, World Clock |
+| Text & Writing | Text Formatter, Text to Speech, Speech to Text, Notepad, To-Do List, Text Compare, Lorem Ipsum, Text to Handwriting, Fancy Text, Text Repeater |
+| Fun & Games | Spin the Wheel, Random Number/Dice/Coin, Typing Test, Reaction Time Test, Tally Counter, Team Generator |
 | Audio & Video | Screen Recorder, Voice Recorder |
-| Developer | JSON Formatter, Base64/URL Encoder, Hash Generator, UUID Generator |
+| Developer | JSON Formatter, Base64/URL, Hash, UUID, Binary & Hex Converter, Regex Tester, Favicon Generator |
 | Files | File Size Calculator |
 
 The site also has a home page, a searchable tools directory, About and Contact pages, and Privacy, Terms and Cookie policy pages. It supports light and dark themes and works at phone width.
@@ -29,6 +30,9 @@ React 19, TypeScript, Vite, Tailwind CSS v4, React Router and Lucide icons.
 | `pptxgenjs` | PDF to PowerPoint |
 | `tesseract.js` + `@tesseract.js-data/eng` | Image to Text (OCR). `scripts/copy-ocr-assets.mjs` copies the engine into `public/ocr` before `dev`/`build`, so it's served from your own domain |
 | `jsbarcode` | Barcode Generator |
+| `jsqr` | QR Code Scanner |
+| `heic2any` | HEIC to JPG (bundles libheif, LGPL; loaded only on that page) |
+| `@fontsource/kalam`, `caveat`, `indie-flower`, `homemade-apple` | Text to Handwriting (OFL / Apache fonts, self-hosted) |
 | `mammoth`, `html-to-pdfmake`, `pdfmake` | Word to PDF |
 | `@fontsource-variable/inter` | Self-hosted Inter font, so no third-party font requests |
 | `vitest` (dev) | Unit tests |
@@ -66,6 +70,7 @@ Copy `.env.example` to `.env`, or set the variables in your hosting dashboard. T
 | `VITE_SITE_URL` | Public URL with no trailing slash. **Needed for production**: it is used for `sitemap.xml`, canonical URLs and Open Graph URLs. If it is missing, no sitemap is generated. |
 | `VITE_CONTACT_ENDPOINT` | Any endpoint that accepts a JSON POST, such as a Formspree form URL. If it is empty, the contact form says it is not connected and does not pretend to send. |
 | `VITE_CONTACT_EMAIL` | Optional public email address shown on the contact and legal pages. |
+| `VITE_INSTAGRAM_URL` | Optional Instagram profile link shown in the footer. |
 | `VITE_ADS_ENABLED` | Must be `true` for ads to load. |
 | `VITE_ADSENSE_CLIENT` | Your real `ca-pub-…` publisher ID. |
 | `VITE_AD_SLOT_HOME`, `VITE_AD_SLOT_TOOL`, `VITE_AD_SLOT_DIRECTORY` | Ad unit IDs, one per placement. A placement with no ID renders nothing. |
@@ -184,4 +189,7 @@ Edit the code or content (most copy lives in `src/config/tools.ts` and `src/page
 - **Screen recorder** works on desktop browsers only (mobile browsers don't allow screen capture).
 - **Sign PDF** places an image of a signature; it is not a certified digital signature.
 - **Image to Text** reads printed English best.
-- The site's `Permissions-Policy` header allows the microphone and screen capture for this site only (`microphone=(self), display-capture=(self)`), which the recorders and speech-to-text need.
+- The site's `Permissions-Policy` header allows the camera, microphone and screen capture for this site only (`camera=(self), microphone=(self), display-capture=(self)`), which the QR scanner, recorders and speech-to-text need.
+- **Income tax calculator** uses FY 2025-26 rules (`src/lib/incomeTax.ts`); update the slabs after each Budget.
+- **Passport photo maker** crops and lays out photos but does not change the background.
+- The site is installable as an app (web manifest in `public/manifest.webmanifest`, icons in `public/icons/`). There is no service worker, so it needs a connection.

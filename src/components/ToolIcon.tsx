@@ -3,6 +3,7 @@ import {
   Folder, Globe, GraduationCap, HardDrive, HeartPulse, Image, ImageDown, Images, KeyRound, Landmark, Percent, Presentation,
   QrCode, Receipt, Repeat, RotateCw, Ruler, Scissors, Sparkles, Tag, TextCursorInput, Timer, Type, Volume2, Watch,
   Scaling, Crop, Minimize2, ScanText, Pipette, PenLine, ListOrdered, Stamp, AudioLines, StickyNote, ListTodo, GitCompare, Pilcrow, Keyboard, ChartPie, Dices, Barcode, Sigma, TrendingUp, PiggyBank, BadgePercent, School, Flame, Braces, Binary, Hash, Fingerprint, ScreenShare, Mic, Video, Code,
+  PenTool, CalendarCheck, WandSparkles, WholeWord, Repeat2, MessageCircle, IndianRupee, Fuel, BedDouble, Hourglass, Earth, Zap, MousePointerClick, Users, Hexagon, Regex, FileArchive, IdCard, Smartphone, ScanQrCode, Captions, LayoutGrid, Grid3x3, EyeOff, AppWindow, ReceiptText, FileUser, Gamepad2, BookOpenCheck,
   type LucideIcon,
 } from 'lucide-react';
 import type { CategoryId, IconName } from '../config/tools';
@@ -13,6 +14,7 @@ const icons: Record<IconName, LucideIcon> = {
   HardDrive, FileText, Image, Sparkles, Calculator, TextCursorInput, Folder, Timer, Watch, AlarmClock, Coffee, Volume2, Tag,
   Receipt, HeartPulse, Landmark, GraduationCap, CalendarDays, FileImage, Images, FileType, Presentation, RotateCw, Clock,
   Scaling, Crop, Minimize2, ScanText, Pipette, PenLine, ListOrdered, Stamp, AudioLines, StickyNote, ListTodo, GitCompare, Pilcrow, Keyboard, ChartPie, Dices, Barcode, Sigma, TrendingUp, PiggyBank, BadgePercent, School, Flame, Braces, Binary, Hash, Fingerprint, ScreenShare, Mic, Video, Code,
+  PenTool, CalendarCheck, WandSparkles, WholeWord, Repeat2, MessageCircle, IndianRupee, Fuel, BedDouble, Hourglass, Earth, Zap, MousePointerClick, Users, Hexagon, Regex, FileArchive, IdCard, Smartphone, ScanQrCode, Captions, LayoutGrid, Grid3x3, EyeOff, AppWindow, ReceiptText, FileUser, Gamepad2, BookOpenCheck,
 };
 
 /** One calm lavender tint for every tool (minimal look). */
@@ -25,6 +27,7 @@ export const categoryTint: Record<CategoryId, string> = {
   text: 'bg-accent-soft text-accent-text',
   media: 'bg-accent-soft text-accent-text',
   developer: 'bg-accent-soft text-accent-text',
+  fun: 'bg-accent-soft text-accent-text',
   files: 'bg-accent-soft text-accent-text',
 };
 

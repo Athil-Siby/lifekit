@@ -10,15 +10,15 @@ export interface PageMeta {
 export const staticPages: PageMeta[] = [
   {
     path: '/',
-    title: 'LifeKit – Free Everyday Tools, All in One Place',
+    title: 'LifeKit – 90 Free Everyday Tools: PDF, Image, Student & Money',
     description:
-      'LifeKit is a free collection of fast, private everyday tools: merge and split PDFs, compress images, generate QR codes and passwords, convert units and more.',
+      'Free online tools that run in your browser: PDF to Word, compress photos to 20KB, sign PDFs, CGPA and attendance calculators, resume builder, timers and more.',
   },
   {
     path: '/tools',
     title: 'All Tools – LifeKit',
     description:
-      'Browse every free LifeKit tool: PDF, image, generator, calculator, text and file utilities. Search by name or filter by category.',
+      'Browse all 90 free LifeKit tools: PDF and documents, images, calculators, student tools, timers, text, fun and developer tools. Search or filter by category.',
   },
   {
     path: '/guides',

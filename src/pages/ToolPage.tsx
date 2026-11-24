@@ -1,8 +1,10 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ChevronRight, Lock, ShieldCheck } from 'lucide-react';
 import { getCategory, toolsBySlug } from '../config/tools';
 import { toolComponents } from '../tools';
+import { ShareButton } from '../components/ShareButton';
+import { rememberTool } from '../lib/recent';
 import { useSeo } from '../hooks/useSeo';
 import { absoluteUrl } from '../config/site';
 import { ToolIcon } from '../components/ToolIcon';
@@ -19,6 +21,7 @@ export default function ToolPage() {
   const { slug = '' } = useParams();
   const tool = toolsBySlug[slug];
   const Component = toolComponents[slug];
+  useEffect(() => { if (tool) rememberTool(slug); }, [slug, tool]);
 
   useSeo({
     title: tool ? `${tool.name} – Free Online Tool | LifeKit` : 'Tool not found – LifeKit',
@@ -80,7 +83,9 @@ export default function ToolPage() {
               <p className="mt-2 max-w-2xl text-fg-muted">{tool.intro}</p>
             </div>
           </div>
-          <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-medium text-fg-muted">
+          <div className="mt-5 flex flex-wrap items-center gap-2">
+          <ShareButton title={`${tool.name} – LifeKit`} text={`${tool.short} Free on LifeKit:`} />
+          <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-medium text-fg-muted">
             {tool.privacyNote ? (
               <>
                 <Lock className="h-3.5 w-3.5 text-success" aria-hidden />
@@ -98,6 +103,7 @@ export default function ToolPage() {
               </>
             )}
           </p>
+          </div>
         </div>
       </div>
 

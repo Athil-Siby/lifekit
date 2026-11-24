@@ -4,15 +4,17 @@
  */
 export const siteConfig = {
   name: 'LifeKit',
-  tagline: 'Everything You Need, All in One Place.',
+  tagline: 'Everyday tools, beautifully simple.',
   description:
-    'Free, fast and private everyday tools for PDFs, images, passwords, QR codes, text, calculations and conversions.',
+    '90 free, fast and private everyday tools: PDF, image, student, money and time tools that run in your browser.',
   /** Public URL without trailing slash, e.g. https://www.example.com. Used for canonical and Open Graph URLs. */
   url: (import.meta.env.VITE_SITE_URL ?? '').replace(/\/+$/, ''),
   /** Optional public contact address shown on the contact page. Leave unset to hide it. */
   contactEmail: import.meta.env.VITE_CONTACT_EMAIL || 'athilsiby@gmail.com',
   /** Optional form endpoint (Formspree-compatible: accepts JSON POST). Leave unset to disable sending. */
   contactEndpoint: import.meta.env.VITE_CONTACT_ENDPOINT ?? '',
+  /** Optional Instagram profile URL shown in the footer, e.g. https://instagram.com/yourname. */
+  instagram: import.meta.env.VITE_INSTAGRAM_URL ?? '',
 } as const;
 
 /** Absolute URL for a path, falling back to the current origin when VITE_SITE_URL is not set. */

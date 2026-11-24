@@ -33,6 +33,348 @@ export interface Guide {
 
 export const guides: Guide[] = [
   {
+    slug: 'compress-photo-to-20kb-for-exam-forms',
+    title: 'How to Compress a Photo or Signature to 20 KB for Exam Forms',
+    description: 'SSC, UPSC, NEET, bank and job forms often want a photo under 50 KB and a signature under 20 KB. Here is how to get the exact size in seconds, for free.',
+    date: '2026-11-24',
+    tools: ['compress-image-to-kb', 'image-resizer', 'crop-image'],
+    body: `Almost every online application in India has the same rule buried in the instructions: "Photograph must be between 20 KB and 50 KB" and "Signature must be between 10 KB and 20 KB". A phone photo is usually 2–5 MB, more than a hundred times too big. Here is the fastest way to fix it.
+
+## Step 1: Take a good photo
+
+- Stand in front of a plain white or light wall, facing the camera.
+- Use daylight from a window, not a harsh flash.
+- For the signature, sign in black or blue ink on plain white paper and photograph it from directly above.
+
+## Step 2: Crop it
+
+Open the [Crop & Rotate Image](/tools/crop-image) tool and cut away everything except your face and shoulders (or just the signature). Smaller area means a smaller file, so crop tightly.
+
+## Step 3: Set the pixel size (if the form asks)
+
+Some forms also give dimensions, such as 200 × 230 pixels for a photo or 140 × 60 for a signature. Use the [Image Resizer](/tools/image-resizer) to set the exact width and height.
+
+## Step 4: Compress to the KB limit
+
+1. Open [Compress Image to KB](/tools/compress-image-to-kb).
+2. Drop in your photo.
+3. Pick the size: 20 KB, 50 KB or type your own.
+4. Press Compress and download the JPG.
+
+LifeKit tries many quality levels and keeps the best one that fits under your limit, so the photo stays as sharp as possible.
+
+> Tip: if a form says "between 20 KB and 50 KB", aim for about 40 KB. Files that are too small can be rejected too.
+
+## Common mistakes
+
+- **Uploading a PNG.** Most forms want JPG/JPEG. The compressor always saves JPG.
+- **Using a selfie with a busy background.** Retake it against a plain wall.
+- **Stretching the photo.** Keep the proportions: crop first, then resize.`,
+  },
+  {
+    slug: 'cgpa-to-percentage-explained',
+    title: 'CGPA to Percentage: How to Convert It (CBSE, VTU, Mumbai University)',
+    description: 'Why CBSE multiplies CGPA by 9.5, which formula your university uses, and how to convert CGPA to percentage and back without mistakes.',
+    date: '2026-11-24',
+    tools: ['cgpa-to-percentage', 'marks-percentage-calculator', 'gpa-calculator'],
+    body: `Job portals, college applications and scholarship forms often ask for a percentage, but your marksheet shows a CGPA. The conversion depends on who issued the grades.
+
+## CBSE and most universities: CGPA × 9.5
+
+CBSE studied years of results and found that a student's percentage was, on average, about 9.5 times their grade point. So:
+
+- 8.2 CGPA × 9.5 = **77.9%**
+- 9.0 CGPA × 9.5 = **85.5%**
+
+Many universities that use a 10-point scale follow the same rule.
+
+## Other common formulas
+
+- **VTU / AICTE:** (CGPA − 0.75) × 10. So 8.0 becomes 72.5%.
+- **Mumbai University:** CGPA × 7.1 + 11. So 8.0 becomes 67.8%.
+- **4-point GPA (US style):** GPA × 25 is a rough guide. 3.6 becomes about 90%.
+
+> Always check your marksheet or university website first. If they print an official formula, use that one.
+
+## Converting percentage back to CGPA
+
+Reverse the formula. With CBSE, divide by 9.5: 85% ÷ 9.5 = 8.95 CGPA.
+
+## Do it instantly
+
+The [CGPA to Percentage](/tools/cgpa-to-percentage) tool has all these formulas built in, in both directions. If you have individual subject marks instead, the [Marks Percentage Calculator](/tools/marks-percentage-calculator) adds them up and shows your percentage and grade.`,
+  },
+  {
+    slug: 'sign-pdf-on-phone',
+    title: 'How to Sign a PDF on Your Phone (No Printer, No App)',
+    description: 'Sign rental agreements, forms and letters on your phone in under a minute: draw your signature, place it on the page and download the signed PDF.',
+    date: '2026-11-24',
+    tools: ['sign-pdf', 'compress-pdf-to-kb', 'pdf-merger'],
+    body: `Printing a document just to sign it and scan it again wastes time and paper. You can do the whole thing on your phone.
+
+## Step by step
+
+1. Open [Sign PDF](/tools/sign-pdf) and choose the PDF from your phone or downloads.
+2. Under **Draw**, sign with your finger in the white box. Prefer typing? Use **Type** and pick your name. You can also **Upload** a photo of your signature on white paper.
+3. Tap **Use signature**.
+4. Tap the page where the signature should go. Drag it into place and use the size slider to make it fit the line.
+5. Need initials on every page? Tap each page to place it again.
+6. Tap **Save signed PDF** and download.
+
+> Your document never leaves your phone. The signing happens inside your browser.
+
+## Is it legally valid?
+
+For many everyday documents (rental forms, permission slips, internal approvals) a picture of your signature is accepted. Some contracts and government filings need a certified digital signature (for example Aadhaar eSign or a DSC in India). If you're unsure, ask the person who sent you the document.
+
+## After signing
+
+- The file is too big to email or upload? Use [Compress PDF to KB](/tools/compress-pdf-to-kb).
+- Need to send several signed pages as one file? Use the [PDF Merger](/tools/pdf-merger).`,
+  },
+  {
+    slug: 'attendance-75-percent-rule',
+    title: 'The 75% Attendance Rule: How Many Classes Can You Miss?',
+    description: 'How attendance percentage is calculated, how to work out how many classes you can skip, and how many you must attend to get back above 75%.',
+    date: '2026-11-24',
+    tools: ['attendance-calculator', 'pomodoro-timer', 'todo-list'],
+    body: `Most Indian colleges and universities require at least 75% attendance to sit for exams. Falling below it can mean fines, extra assignments or being "detained". Here's how to stay safe.
+
+## How attendance is calculated
+
+Attendance % = classes attended ÷ classes held × 100.
+
+If you attended 42 of 50 classes, that's 84%.
+
+## How many classes can I skip?
+
+You can keep missing classes as long as attended ÷ (held + missed) stays at or above 75%. With 42 of 50:
+
+- Miss 1 → 42/51 = 82.4%
+- Miss 6 → 42/56 = 75.0% ✓
+- Miss 7 → 42/57 = 73.7% ✗
+
+So you can miss **6** more.
+
+## I'm below 75%. How do I recover?
+
+Each class you attend pushes the percentage up. With 30 of 50 (60%), you'd need to attend the next **30 classes in a row** to reach 60/80 = 75%. The lower you fall, the longer it takes, so don't let it slip early in the semester.
+
+> The [Attendance Calculator](/tools/attendance-calculator) does this maths instantly for any target: 65%, 75%, 80% or more.
+
+## Tips
+
+- Check your college portal every week, not just before exams.
+- Ask how medical leave is counted. Some colleges add it back, some don't.
+- Labs and tutorials are often tracked separately.`,
+  },
+  {
+    slug: 'new-vs-old-tax-regime',
+    title: 'New vs Old Tax Regime (FY 2025-26): Which One Saves You More?',
+    description: 'A simple explanation of India’s new and old income tax regimes for FY 2025-26: slabs, the ₹12 lakh rebate, deductions and how to choose.',
+    date: '2026-11-24',
+    tools: ['income-tax-calculator', 'sip-calculator', 'fd-rd-calculator'],
+    body: `Since Budget 2025, most salaried people in India pay less tax under the new regime, but not everyone. Here's how the two compare for FY 2025-26 (AY 2026-27).
+
+> Tax rules change in every Budget. Use this as a guide and confirm on incometax.gov.in before filing.
+
+## New regime: lower rates, few deductions
+
+- No tax on income up to ₹4 lakh, then 5%, 10%, 15%, 20%, 25% and 30% in ₹4 lakh steps above that.
+- Rebate under section 87A: if taxable income is ₹12 lakh or less, your tax is zero.
+- Salaried people get a ₹75,000 standard deduction, so a salary up to ₹12.75 lakh has no tax.
+- Most deductions (80C, HRA, home-loan interest on a self-occupied home) are not allowed.
+
+## Old regime: higher rates, many deductions
+
+- No tax up to ₹2.5 lakh (more for senior citizens), then 5%, 20% and 30%.
+- Rebate if taxable income is ₹5 lakh or less.
+- ₹50,000 standard deduction, plus 80C (up to ₹1.5 lakh), 80D health insurance, HRA, home-loan interest and more.
+
+## Which should you choose?
+
+Add up all your deductions. If they're large (for example full 80C, high HRA and a home loan), the old regime can still win at higher incomes. For most people with few deductions, the new regime is cheaper.
+
+The quickest way is to try your numbers in the [Income Tax Calculator](/tools/income-tax-calculator). It shows both regimes side by side and tells you which saves more.`,
+  },
+  {
+    slug: 'passport-photo-size-guide',
+    title: 'Passport Photo Size Guide: 35×45 mm, 2×2 Inch and More',
+    description: 'The right passport and visa photo sizes for India, the US, UK, Canada and Schengen, plus tips for a photo that gets accepted, and how to print it at home.',
+    date: '2026-11-24',
+    tools: ['passport-photo-maker', 'compress-image-to-kb', 'crop-image'],
+    body: `Photo rules are the most common reason passport and visa applications get delayed. Here are the usual sizes and how to make a correct photo yourself.
+
+## Common sizes
+
+- **35 × 45 mm:** India passport, UK, Schengen/EU, Australia and many others.
+- **2 × 2 inches (51 × 51 mm):** US passport and visa, and India visa/OCI.
+- **50 × 70 mm:** Canada passport.
+- **33 × 48 mm:** China visa.
+
+> Rules change and differ by country. Always check the official website for the exact requirements.
+
+## What makes a photo acceptable
+
+- Plain white or light background with no shadows.
+- Face the camera directly, neutral expression, mouth closed.
+- Eyes open and clearly visible; no sunglasses or tinted glasses.
+- Head and top of shoulders in the frame; the face takes up most of the height.
+- Recent photo (usually taken in the last 6 months).
+
+## Make and print it at home
+
+1. Take the photo against a white wall in daylight, with the phone at eye level.
+2. Open the [Passport Photo Maker](/tools/passport-photo-maker), choose the size and fit your face in the oval.
+3. Download a print sheet for 4×6 inch photo paper (prints at any photo shop or kiosk) or A4.
+4. Print at **100% / actual size**, not "fit to page".
+
+For online applications that want a small file, run the single photo through [Compress Image to KB](/tools/compress-image-to-kb).`,
+  },
+  {
+    slug: 'edit-a-pdf-convert-to-word',
+    title: 'How to Edit a PDF: Convert It to Word for Free',
+    description: 'The simplest way to edit the text in a PDF is to turn it into a Word document. Here is how, what gets kept, and what to do with scanned PDFs.',
+    date: '2026-11-24',
+    tools: ['pdf-to-word', 'image-to-text', 'word-to-pdf'],
+    body: `PDFs are designed to look the same everywhere, which also makes them hard to change. The easiest fix is to convert the PDF into a Word document, edit it, then save it as a PDF again.
+
+## Step 1: Convert to Word
+
+1. Open [PDF to Word](/tools/pdf-to-word).
+2. Drop in your PDF and press **Convert to Word**.
+3. Download the .docx file.
+
+LifeKit keeps the text, paragraphs and headings. Complex layouts with columns, tables and images are simplified, so you may need to tidy the formatting.
+
+## Step 2: Edit
+
+Open the .docx in Microsoft Word, Google Docs (upload it to Drive) or WPS Office on your phone, and make your changes.
+
+## Step 3: Turn it back into a PDF
+
+Use **File → Save as PDF** in Word or Google Docs, or LifeKit's [Word to PDF](/tools/word-to-pdf).
+
+## What about scanned PDFs?
+
+A scanned PDF is just a photo of paper, so it has no real text inside. PDF to Word will tell you if that's the case. Instead:
+
+1. Take a screenshot of the page (or open the scan as an image).
+2. Use [Image to Text](/tools/image-to-text) to read the words.
+3. Copy the text into a new document.
+
+> Converting your own documents is fine. Don't edit official documents such as certificates or ID cards: that can be illegal.`,
+  },
+  {
+    slug: 'sip-vs-fd',
+    title: 'SIP vs FD: Which Is Better for Your Savings?',
+    description: 'A plain-English comparison of mutual fund SIPs and bank fixed deposits: returns, risk, taxes and how to choose, with examples you can try yourself.',
+    date: '2026-11-24',
+    tools: ['sip-calculator', 'fd-rd-calculator', 'compound-interest-calculator'],
+    body: `Fixed deposits (FDs) and mutual fund SIPs are the two most common ways Indians save. They suit different goals.
+
+## Fixed deposit (FD)
+
+- You lock money in a bank for a fixed time at a fixed rate (often 6–7.5% a year).
+- Very low risk: you know exactly what you'll get. Bank deposits are insured up to ₹5 lakh per bank by DICGC.
+- Interest is taxed at your income-tax slab rate.
+
+**Example:** ₹1,00,000 for 3 years at 7%, compounded quarterly, grows to about ₹1,23,100.
+
+## SIP (systematic investment plan)
+
+- You invest a fixed amount every month in a mutual fund.
+- Equity funds have historically averaged around 10–14% a year in India over long periods, but returns go up and down and are **not guaranteed**.
+- Better suited to goals 5+ years away, so short-term falls have time to recover.
+
+**Example:** ₹5,000 a month for 10 years at an assumed 12% grows to about ₹11.6 lakh, from ₹6 lakh invested.
+
+## How to choose
+
+- **Need the money within 1–3 years, or can't handle any loss?** FD or RD.
+- **Saving for something 5–15 years away?** A SIP has historically grown faster.
+- **Unsure?** Many people split: an emergency fund in FDs, long-term goals in SIPs.
+
+Try your own numbers with the [SIP Calculator](/tools/sip-calculator) and the [FD & RD Calculator](/tools/fd-rd-calculator).
+
+> This guide is general information, not financial advice. Read scheme documents carefully before investing.`,
+  },
+  {
+    slug: 'pomodoro-study-method',
+    title: 'The Pomodoro Technique: Study Longer Without Burning Out',
+    description: 'How the Pomodoro technique works, why it helps you focus, and a simple study plan you can start today with a free online timer.',
+    date: '2026-11-24',
+    tools: ['pomodoro-timer', 'todo-list', 'sleep-calculator'],
+    body: `If you sit down to study for three hours and end up scrolling your phone after ten minutes, the Pomodoro technique is for you.
+
+## How it works
+
+1. Pick one task.
+2. Focus on it for **25 minutes**. No phone, no tabs.
+3. Take a **5-minute** break: stand up, drink water, stretch.
+4. After **4 rounds**, take a longer **15–30 minute** break.
+
+Each 25-minute block is one "pomodoro", named after a tomato-shaped kitchen timer.
+
+## Why it works
+
+- 25 minutes feels short, so it's easy to start.
+- Regular breaks stop your brain from getting tired.
+- Counting pomodoros shows real progress ("I did 6 today!").
+
+## A simple exam-week plan
+
+- Morning: 4 pomodoros on your hardest subject.
+- Afternoon: 4 pomodoros of practice questions.
+- Evening: 2 pomodoros of revision, then stop.
+
+## Tools that help
+
+- The [Pomodoro Timer](/tools/pomodoro-timer) runs the cycle for you and rings at each break.
+- Write the day's tasks in the [To-Do List](/tools/todo-list) and tick them off.
+- Sleep matters as much as study. Use the [Sleep Calculator](/tools/sleep-calculator) to find a bedtime that fits your wake-up time.
+
+> Keep your phone in another room during focus blocks. It's the single biggest difference.`,
+  },
+  {
+    slug: 'fresher-resume-tips',
+    title: 'How to Write Your First Resume (Fresher Guide with Examples)',
+    description: 'No work experience? Here is what to put on a fresher resume, how to write strong bullet points, and how to make it pass ATS filters.',
+    date: '2026-11-24',
+    tools: ['resume-builder', 'word-counter', 'text-compare'],
+    body: `Your first resume doesn't need years of experience. It needs to show what you can do, clearly, on one page.
+
+## What to include
+
+1. **Name and contact:** phone, a professional email, city, and LinkedIn or portfolio link.
+2. **Summary (2–3 lines):** who you are and what you're looking for.
+3. **Education:** degree, college, years, CGPA or percentage if it's good.
+4. **Projects:** your best substitute for experience. College projects, hackathons and personal projects all count.
+5. **Internships or part-time work**, if any.
+6. **Skills:** tools and technologies you can actually use.
+7. **Achievements:** competitions, certificates, volunteering, languages.
+
+## Write bullets that stand out
+
+Start with an action word and add a result, ideally a number:
+
+- Weak: "Worked on the college website."
+- Strong: "Rebuilt the college events page in React, cutting load time by 40%."
+
+## Make it ATS-friendly
+
+Many companies filter resumes with software (applicant tracking systems) before a person reads them.
+
+- Use a simple single-column layout with standard headings.
+- Use real text, not images of text.
+- Include keywords from the job description (if they ask for "Excel", write "Excel").
+- Save as PDF unless they ask for Word.
+
+## Build it in minutes
+
+The [Resume Builder](/tools/resume-builder) gives you a clean, ATS-friendly layout. Fill in the form and download a PDF. It saves your progress on your device, so you can tailor it for each job.`,
+  },
+  {
     slug: 'powerpoint-to-pdf',
     title: 'How to Convert PowerPoint to PDF (Free, on Any Device)',
     description:

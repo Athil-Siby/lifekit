@@ -6,7 +6,7 @@
  * (scripts/generate-sitemap.mjs) can read it directly with Node.
  */
 
-export type CategoryId = 'pdf' | 'image' | 'generators' | 'calculators' | 'time' | 'text' | 'media' | 'developer' | 'files';
+export type CategoryId = 'pdf' | 'image' | 'generators' | 'calculators' | 'time' | 'text' | 'media' | 'developer' | 'fun' | 'files';
 
 export type IconName =
   | 'FileStack'
@@ -76,7 +76,36 @@ export type IconName =
   | 'ScreenShare'
   | 'Mic'
   | 'Video'
-  | 'Code';
+  | 'Code'
+  | 'PenTool'
+  | 'CalendarCheck'
+  | 'WandSparkles'
+  | 'WholeWord'
+  | 'Repeat2'
+  | 'MessageCircle'
+  | 'IndianRupee'
+  | 'Fuel'
+  | 'BedDouble'
+  | 'Hourglass'
+  | 'Earth'
+  | 'Zap'
+  | 'MousePointerClick'
+  | 'Users'
+  | 'Hexagon'
+  | 'Regex'
+  | 'FileArchive'
+  | 'IdCard'
+  | 'Smartphone'
+  | 'ScanQrCode'
+  | 'Captions'
+  | 'LayoutGrid'
+  | 'Grid3x3'
+  | 'EyeOff'
+  | 'AppWindow'
+  | 'ReceiptText'
+  | 'FileUser'
+  | 'Gamepad2'
+  | 'BookOpenCheck';
 
 export interface Category {
   id: CategoryId;
@@ -113,7 +142,7 @@ export interface Tool {
 }
 
 export const categories: Category[] = [
-  { id: 'pdf', name: 'PDF & Documents', description: 'Merge, split, compress and convert PDFs, Word and PowerPoint.', icon: 'FileText' },
+  { id: 'pdf', name: 'PDF & Documents', description: 'Merge, compress, convert and sign PDFs, plus invoices and resumes.', icon: 'FileText' },
   { id: 'image', name: 'Image Tools', description: 'Resize, crop, compress, convert and read text from images.', icon: 'Image' },
   { id: 'generators', name: 'Generators', description: 'QR codes, barcodes, passwords, random picks and more.', icon: 'Sparkles' },
   {
@@ -125,7 +154,8 @@ export const categories: Category[] = [
   { id: 'time', name: 'Time & Timers', description: 'Timer, stopwatch, alarm clock and study timer.', icon: 'Clock' },
   { id: 'text', name: 'Text & Writing', description: 'Notes, to-dos, voice typing, word counts and text tools.', icon: 'TextCursorInput' },
   { id: 'media', name: 'Audio & Video', description: 'Record your screen or voice.', icon: 'Video' },
-  { id: 'developer', name: 'Developer Tools', description: 'JSON, Base64, hashes and UUIDs.', icon: 'Code' },
+  { id: 'fun', name: 'Fun & Games', description: 'Spin the wheel, typing and reaction tests, dice, teams and counters.', icon: 'Gamepad2' },
+  { id: 'developer', name: 'Developer Tools', description: 'JSON, Base64, hashes, UUIDs, regex and number bases.', icon: 'Code' },
   { id: 'files', name: 'File Utilities', description: 'Understand and convert file sizes.', icon: 'Folder' },
 ];
 
@@ -1388,7 +1418,7 @@ export const tools: Tool[] = [
     short: 'Check your typing speed in words per minute.',
     metaDescription: 'Free typing speed test: measure your WPM and accuracy in 15, 30, 60 or 120 seconds. Track your best score and practise to type faster.',
     intro: 'How fast can you type? Take a quick test with common words and see your words per minute and accuracy. Your best score is saved so you can beat it.',
-    category: 'text', icon: 'Keyboard',
+    category: 'fun', icon: 'Keyboard',
     keywords: ['typing test', 'typing speed test', 'wpm test', 'words per minute', 'typing practice', 'keyboard test'],
     badge: 'new', handlesFiles: false,
     steps: ['Pick a test length.', 'Start typing the words shown. The timer starts with your first key.', 'Press space after each word.', 'See your WPM and accuracy when time runs out.'],
@@ -1405,7 +1435,7 @@ export const tools: Tool[] = [
     short: 'A random picker wheel for names, choices and prizes.',
     metaDescription: 'Spin the wheel to pick a random name, choice or prize. Add your own options, remove winners and spin again. Fair, fun and free.',
     intro: 'Can’t decide? Type your options, spin the wheel and let it choose. Great for picking names in class, choosing food or running giveaways.',
-    category: 'generators', icon: 'ChartPie',
+    category: 'fun', icon: 'ChartPie',
     keywords: ['spin the wheel', 'wheel spinner', 'random name picker', 'decision wheel', 'random picker', 'wheel of names'],
     badge: 'new', handlesFiles: false,
     steps: ['Type your options, one per line.', 'Press Spin.', 'See the winner, and optionally remove it before the next spin.'],
@@ -1421,7 +1451,7 @@ export const tools: Tool[] = [
     short: 'Random numbers, dice rolls and coin flips.',
     metaDescription: 'Generate random numbers in any range, with or without repeats. Roll dice or flip a coin. Fair results from a secure random generator.',
     intro: 'Pick lottery numbers, choose a raffle winner, roll dice for a board game or flip a coin, with results you can trust.',
-    category: 'generators', icon: 'Dices',
+    category: 'fun', icon: 'Dices',
     keywords: ['random number generator', 'random number', 'roll dice', 'flip a coin', 'pick a number', 'raffle'],
     handlesFiles: false,
     steps: ['Choose Number, Dice or Coin.', 'Set the range and how many numbers you need.', 'Press Generate.'],
@@ -1621,6 +1651,303 @@ export const tools: Tool[] = [
       { q: 'What format is the file?', a: 'WebM or M4A depending on your browser. Both play on phones and computers.' },
     ],
     related: ['speech-to-text', 'screen-recorder', 'text-to-speech'],
+  },
+  // ---------- Batch 4 ----------
+  {
+    slug: 'text-to-handwriting', name: 'Text to Handwriting', short: 'Turn typed text into realistic handwriting on paper.',
+    metaDescription: 'Free text to handwriting converter: type or paste text and get realistic handwritten pages on ruled paper. Blue or black ink, Hindi supported. Download PDF.',
+    intro: 'Type your notes or assignment and see them written by hand on ruled paper, complete with natural wobble. Choose the handwriting, ink colour and paper, then download images or a PDF.',
+    category: 'text', icon: 'PenTool', keywords: ['text to handwriting', 'handwriting converter', 'typed to handwritten', 'assignment handwriting', 'handwritten notes generator', 'hindi handwriting'],
+    badge: 'new', handlesFiles: false,
+    steps: ['Type or paste your text.', 'Choose the handwriting style, ink colour and paper.', 'Adjust size and messiness until it looks right.', 'Download the pages as images or one PDF.'],
+    faqs: [
+      { q: 'Does it support Hindi?', a: 'Yes. Choose the Kalam handwriting, which supports Devanagari as well as English.' },
+      { q: 'Can I use it for school assignments?', a: 'That depends on your school’s rules. Many teachers want work in your own handwriting, so check first.' },
+    ],
+    related: ['notepad', 'word-counter', 'images-to-pdf'],
+  },
+  {
+    slug: 'attendance-calculator', name: 'Attendance Calculator', short: 'How many classes can you skip and still stay above 75%?',
+    metaDescription: 'Attendance calculator for college students: find out how many classes you can bunk and still keep 75%, or how many you must attend to get back above it.',
+    intro: 'Enter the classes you’ve attended and the total held. LifeKit tells you how many more you can safely miss, or how many you need to attend in a row to reach the required percentage.',
+    category: 'calculators', icon: 'CalendarCheck', keywords: ['attendance calculator', 'bunk calculator', '75 attendance calculator', 'how many classes can i skip', 'attendance percentage'],
+    badge: 'new', handlesFiles: false,
+    steps: ['Enter classes attended and total classes held.', 'Choose the required attendance (usually 75%).', 'Read how many classes you can skip or must attend.'],
+    faqs: [
+      { q: 'How is attendance percentage calculated?', a: 'Classes attended ÷ total classes × 100. For example, 42 out of 50 is 84%.' },
+      { q: 'Does it count medical leave?', a: 'No. Colleges handle leave differently, so add approved leave to “attended” only if your college counts it.' },
+    ],
+    related: ['marks-percentage-calculator', 'cgpa-to-percentage', 'gpa-calculator'],
+  },
+  {
+    slug: 'fancy-text-generator', name: 'Fancy Text Generator', short: 'Stylish fonts for Instagram bios, captions and WhatsApp.',
+    metaDescription: 'Fancy text generator: turn normal text into 𝐛𝐨𝐥𝐝, 𝓈𝒸𝓇𝒾𝓅𝓉, 𝕕𝕠𝕦𝕓𝕝𝕖 and more stylish fonts. Copy and paste into Instagram, WhatsApp, games and bios.',
+    intro: 'Make your bio and captions stand out. Type once and copy any of 16 stylish text styles: bold, script, bubble, small caps, upside down and more.',
+    category: 'text', icon: 'WandSparkles', keywords: ['fancy text generator', 'instagram fonts', 'stylish text', 'cool fonts copy paste', 'bio fonts', 'font generator'],
+    badge: 'popular', handlesFiles: false,
+    steps: ['Type your text.', 'Find a style you like.', 'Tap Copy and paste it anywhere.'],
+    faqs: [
+      { q: 'Why do some styles show boxes?', a: 'These styles use special Unicode characters. Most phones and apps show them, but some older devices or apps can’t.' },
+      { q: 'Are fancy fonts bad for accessibility?', a: 'Screen readers may read them strangely, so use them for decoration, not for important information.' },
+    ],
+    related: ['text-formatter', 'text-repeater', 'word-counter'],
+  },
+  {
+    slug: 'marks-percentage-calculator', name: 'Marks Percentage Calculator', short: 'Total marks, percentage and grade for all your subjects.',
+    metaDescription: 'Calculate your marks percentage for board exams or semesters: add subjects, enter marks and see your total, percentage, grade and CGPA equivalent.',
+    intro: 'Add your subjects and marks to get your overall percentage instantly, along with a CBSE-style grade and the equivalent CGPA.',
+    category: 'calculators', icon: 'BookOpenCheck', keywords: ['percentage calculator marks', 'marks percentage', 'board exam percentage', 'total marks calculator', 'percentage of marks'],
+    handlesFiles: false,
+    steps: ['Enter each subject’s marks and maximum marks.', 'Add or remove subjects as needed.', 'Read your total, percentage and grade.'],
+    faqs: [{ q: 'How do I calculate percentage of marks?', a: 'Add up all marks scored, divide by the total maximum marks, and multiply by 100.' }],
+    related: ['cgpa-to-percentage', 'gpa-calculator', 'attendance-calculator'],
+  },
+  {
+    slug: 'number-to-words', name: 'Number to Words', short: 'Write amounts in words for cheques, in lakh/crore or million.',
+    metaDescription: 'Convert numbers to words for cheques and invoices: “Rupees One Lakh Twenty-Five Thousand Only”. Indian lakh/crore and international million/billion.',
+    intro: 'Writing a cheque or invoice? Type an amount and get it in words, in the Indian system (lakh, crore) or the international one (million, billion), with rupees and paise.',
+    category: 'calculators', icon: 'WholeWord', keywords: ['number to words', 'amount in words', 'rupees in words', 'cheque amount in words', 'lakh crore converter'],
+    handlesFiles: false,
+    steps: ['Type the number or amount.', 'Choose lakh/crore or million/billion.', 'Copy the words or the cheque-style text.'],
+    faqs: [{ q: 'What is 1 crore in millions?', a: '1 crore = 10 million, and 1 lakh = 100,000.' }],
+    related: ['invoice-generator', 'gst-calculator', 'calculator'],
+  },
+  {
+    slug: 'text-repeater', name: 'Text Repeater', short: 'Repeat any text or emoji up to 10,000 times.',
+    metaDescription: 'Free text repeater: repeat words, emojis or messages hundreds of times with new lines, spaces or commas, and copy in one tap.',
+    intro: 'Repeat a word, message or emoji as many times as you like, separated by new lines, spaces or commas.',
+    category: 'text', icon: 'Repeat2', keywords: ['text repeater', 'repeat text', 'emoji repeater', 'repeat message', 'text multiplier'],
+    handlesFiles: false, steps: ['Type the text.', 'Choose how many times and the separator.', 'Copy the result.'],
+    faqs: [{ q: 'Is there a limit?', a: 'Up to 10,000 repeats, which is plenty for most uses.' }],
+    related: ['fancy-text-generator', 'text-formatter', 'word-counter'],
+  },
+  {
+    slug: 'whatsapp-link-generator', name: 'WhatsApp Link Generator', short: 'Create a wa.me chat link and QR code with a ready message.',
+    metaDescription: 'Create a WhatsApp click-to-chat link (wa.me) with a pre-filled message, plus a QR code. Perfect for Instagram bios, shops and business cards.',
+    intro: 'Let customers or friends message you in one tap. Enter your number and an optional message to get a WhatsApp link and QR code.',
+    category: 'generators', icon: 'MessageCircle', keywords: ['whatsapp link generator', 'wa.me link', 'click to chat', 'whatsapp qr code', 'whatsapp link for instagram'],
+    handlesFiles: false, steps: ['Enter your WhatsApp number with country code.', 'Add a message (optional).', 'Copy the link or download the QR code.'],
+    faqs: [{ q: 'Do people need to save my number?', a: 'No. The link opens a chat with you directly.' }],
+    related: ['qr-code-generator', 'qr-code-scanner', 'fancy-text-generator'],
+  },
+  {
+    slug: 'income-tax-calculator', name: 'Income Tax Calculator (India)', short: 'Compare old vs new tax regime for FY 2025-26.',
+    metaDescription: 'Income tax calculator for India FY 2025-26 (AY 2026-27): compare the new and old regime, with standard deduction, 87A rebate, surcharge and cess.',
+    intro: 'See how much income tax you’ll pay under the new and old regimes, and which one saves you more. Includes the ₹12 lakh rebate, standard deduction, 80C and cess.',
+    category: 'calculators', icon: 'IndianRupee', keywords: ['income tax calculator', 'new vs old regime', 'tax calculator india', 'income tax fy 2025-26', 'salary tax calculator'],
+    badge: 'new', handlesFiles: false,
+    steps: ['Enter your yearly income.', 'Tick “salaried” if you get the standard deduction.', 'Add old-regime deductions like 80C if you have them.', 'Compare the two regimes.'],
+    faqs: [
+      { q: 'Is income up to ₹12 lakh tax-free?', a: 'Under the new regime for FY 2025-26, yes: the 87A rebate covers tax on taxable income up to ₹12 lakh. Salaried people also get a ₹75,000 standard deduction, so salary up to ₹12.75 lakh has no tax.' },
+      { q: 'Which regime should I choose?', a: 'If your deductions (80C, HRA, home loan and so on) are large, the old regime may be cheaper. The calculator compares both.' },
+      { q: 'Is this tax advice?', a: 'No. It’s an estimate based on published slabs. Confirm on incometax.gov.in or with a tax professional.' },
+    ],
+    related: ['gst-calculator', 'sip-calculator', 'fd-rd-calculator'],
+  },
+  {
+    slug: 'fd-rd-calculator', name: 'FD & RD Calculator', short: 'Maturity amount for fixed and recurring deposits.',
+    metaDescription: 'FD and RD calculator: find the maturity amount and interest for fixed deposits and recurring deposits with quarterly compounding, like Indian banks.',
+    intro: 'Planning a fixed deposit or a monthly recurring deposit? See exactly how much you’ll get back at maturity.',
+    category: 'calculators', icon: 'Landmark', keywords: ['fd calculator', 'rd calculator', 'fixed deposit calculator', 'recurring deposit calculator', 'fd maturity'],
+    handlesFiles: false, steps: ['Choose FD or RD.', 'Enter the amount, interest rate and period.', 'Read the maturity amount and interest.'],
+    faqs: [{ q: 'How often is FD interest compounded?', a: 'Most Indian banks compound quarterly, which this calculator uses.' }],
+    related: ['compound-interest-calculator', 'sip-calculator', 'income-tax-calculator'],
+  },
+  {
+    slug: 'fuel-cost-calculator', name: 'Fuel Cost Calculator', short: 'How much fuel a trip needs and what it costs.',
+    metaDescription: 'Trip fuel cost calculator: enter distance, mileage and petrol price to see fuel needed, total cost, cost per km and cost per person.',
+    intro: 'Planning a road trip? Work out the fuel cost and split it fairly between friends.',
+    category: 'calculators', icon: 'Fuel', keywords: ['fuel cost calculator', 'petrol cost calculator', 'trip cost calculator', 'mileage calculator'],
+    handlesFiles: false, steps: ['Enter the distance.', 'Enter your vehicle’s mileage and the fuel price.', 'Add how many people are sharing.'],
+    faqs: [{ q: 'Where do I find my mileage?', a: 'Fill the tank, note the odometer, drive, refill, then divide kilometres driven by litres added.' }],
+    related: ['unit-converter', 'tip-calculator', 'discount-calculator'],
+  },
+  {
+    slug: 'sleep-calculator', name: 'Sleep Calculator', short: 'Best times to sleep or wake up, based on sleep cycles.',
+    metaDescription: 'Sleep calculator: find the best bedtime for your wake-up time, or when to wake up if you sleep now, using 90-minute sleep cycles.',
+    intro: 'Wake up feeling fresh by timing your sleep with 90-minute cycles. Pick a wake-up time to get bedtimes, or see when to set your alarm if you sleep now.',
+    category: 'calculators', icon: 'BedDouble', keywords: ['sleep calculator', 'bedtime calculator', 'sleep cycle calculator', 'when should i sleep', 'wake up time'],
+    handlesFiles: false, steps: ['Choose “Wake up at” or “Sleep now”.', 'Pick your time.', 'Choose one of the suggested times.'],
+    faqs: [{ q: 'How much sleep do teenagers need?', a: 'Health guidelines suggest 8–10 hours for teenagers and 7–9 for adults.' }],
+    related: ['alarm-clock', 'pomodoro-timer', 'calorie-calculator'],
+  },
+  {
+    slug: 'countdown-timer', name: 'Countdown to Date', short: 'Live countdown to exams, birthdays or any event.',
+    metaDescription: 'Create a live countdown to any date: exams, birthdays, holidays or launches. Shows days, hours, minutes and seconds. Share it with a link.',
+    intro: 'How many days until your exams, birthday or trip? Set the date and watch the live countdown, then share the link with friends.',
+    category: 'time', icon: 'Hourglass', keywords: ['countdown timer', 'days until', 'exam countdown', 'countdown to date', 'birthday countdown'],
+    handlesFiles: false, steps: ['Name your event.', 'Pick the date and time.', 'Copy the link to share your countdown.'],
+    faqs: [{ q: 'Can friends see the same countdown?', a: 'Yes. Copy the link: it contains the event name and date.' }],
+    related: ['date-calculator', 'timer', 'world-clock'],
+  },
+  {
+    slug: 'world-clock', name: 'World Clock', short: 'Current time in cities around the world.',
+    metaDescription: 'Free world clock: see the current time in India, Dubai, London, New York and any city. Add your own cities and see the time difference.',
+    intro: 'Keep track of family, friends and colleagues abroad. See the live time in multiple cities and how far ahead or behind they are.',
+    category: 'time', icon: 'Earth', keywords: ['world clock', 'time in dubai', 'time in usa', 'current time', 'time difference'],
+    handlesFiles: false, steps: ['See the default cities.', 'Add any city from the list.', 'Remove cities you don’t need.'],
+    faqs: [{ q: 'Does it handle daylight saving?', a: 'Yes. It uses your browser’s built-in time-zone database.' }],
+    related: ['time-zone-converter', 'countdown-timer', 'alarm-clock'],
+  },
+  {
+    slug: 'reaction-time-test', name: 'Reaction Time Test', short: 'How fast are your reflexes? Test in milliseconds.',
+    metaDescription: 'Test your reaction time: wait for green and tap as fast as you can. See your time in milliseconds, your average and your best score.',
+    intro: 'Wait for the box to turn green, then tap as fast as you can. The average person reacts in about 250 milliseconds. Can you beat it?',
+    category: 'fun', icon: 'Zap', keywords: ['reaction time test', 'reflex test', 'reaction speed', 'human benchmark', 'click speed'],
+    handlesFiles: false, steps: ['Tap the box to start.', 'Wait for it to turn green.', 'Tap as fast as you can.'],
+    faqs: [{ q: 'What is a good reaction time?', a: 'Around 200–250 ms is typical. Under 200 ms is very fast.' }],
+    related: ['typing-test', 'spin-the-wheel', 'random-number-generator'],
+  },
+  {
+    slug: 'tally-counter', name: 'Tally Counter', short: 'A simple tap counter that remembers the count.',
+    metaDescription: 'Online tally counter: tap to count people, laps, reps or prayers. Count up or down by 1, 5 or 10, and the count is saved on your device.',
+    intro: 'Count anything with a big tap button: people at an event, reps at the gym, laps or tasbih. The count is saved even if you close the page.',
+    category: 'fun', icon: 'MousePointerClick', keywords: ['tally counter', 'click counter', 'tap counter', 'online counter', 'tasbih counter'],
+    handlesFiles: false, steps: ['Tap the circle to count.', 'Use + and − to adjust.', 'Reset when you’re done.'],
+    faqs: [{ q: 'Is the count saved?', a: 'Yes, on this device, until you reset it.' }],
+    related: ['stopwatch', 'reaction-time-test', 'team-generator'],
+  },
+  {
+    slug: 'team-generator', name: 'Random Team Generator', short: 'Split names into fair random teams.',
+    metaDescription: 'Random team generator: paste a list of names and split them into 2 or more fair, random teams for games, class projects or sports.',
+    intro: 'Paste your list of names, choose how many teams, and LifeKit shuffles everyone into balanced random groups.',
+    category: 'fun', icon: 'Users', keywords: ['team generator', 'random team picker', 'group generator', 'split into teams', 'random groups'],
+    handlesFiles: false, steps: ['Type the names, one per line.', 'Choose the number of teams.', 'Press “Make teams” and copy the result.'],
+    faqs: [{ q: 'Is it fair?', a: 'Yes. Names are shuffled with a secure random generator and teams differ in size by at most one.' }],
+    related: ['spin-the-wheel', 'random-number-generator', 'tally-counter'],
+  },
+  {
+    slug: 'base-converter', name: 'Binary & Hex Converter', short: 'Convert numbers between binary, octal, decimal and hex.',
+    metaDescription: 'Convert numbers between binary, octal, decimal and hexadecimal instantly. Supports very large numbers. Free number base converter.',
+    intro: 'Convert any whole number between binary (base 2), octal (base 8), decimal (base 10) and hexadecimal (base 16).',
+    category: 'developer', icon: 'Hexagon', keywords: ['binary converter', 'hex to decimal', 'decimal to binary', 'number base converter', 'binary to decimal'],
+    handlesFiles: false, steps: ['Choose the input base.', 'Type the number.', 'Copy any of the results.'],
+    faqs: [{ q: 'Does it support fractions?', a: 'No, whole numbers only, but they can be as large as you like.' }],
+    related: ['scientific-calculator', 'hash-generator', 'base64-encoder'],
+  },
+  {
+    slug: 'regex-tester', name: 'Regex Tester', short: 'Test regular expressions with live highlighting.',
+    metaDescription: 'Free online regex tester: write a regular expression, see matches highlighted live, and inspect capture groups. JavaScript syntax.',
+    intro: 'Build and debug regular expressions with live match highlighting and capture groups, using JavaScript regex syntax.',
+    category: 'developer', icon: 'Regex', keywords: ['regex tester', 'regular expression tester', 'regex online', 'test regex', 'javascript regex'],
+    handlesFiles: false, steps: ['Type your pattern.', 'Choose flags.', 'Paste test text and see matches.'],
+    faqs: [{ q: 'Which regex flavour does it use?', a: 'JavaScript (ECMAScript), the same as in browsers and Node.js.' }],
+    related: ['json-formatter', 'text-compare', 'base64-encoder'],
+  },
+  {
+    slug: 'favicon-generator', name: 'Favicon Generator', short: 'Make favicon.ico and app icons from a letter or logo.',
+    metaDescription: 'Free favicon generator: create favicon.ico, PNG icons, Apple touch icon and Android icons from text, an emoji or your logo, with the HTML code.',
+    intro: 'Give your website a proper icon. Create one from a letter, emoji or logo and download a complete pack with the HTML to paste in.',
+    category: 'developer', icon: 'AppWindow', keywords: ['favicon generator', 'favicon ico', 'create favicon', 'apple touch icon', 'website icon'],
+    handlesFiles: true, steps: ['Choose a letter/emoji or upload a logo.', 'Pick colours and corner style.', 'Download the pack and add the HTML to your site.'],
+    faqs: [{ q: 'What’s included?', a: 'favicon.ico (16, 32, 48), PNG favicons, a 180×180 Apple touch icon, 192 and 512 Android icons and a web manifest.' }],
+    related: ['image-resizer', 'color-picker', 'qr-code-generator'],
+  },
+  {
+    slug: 'compress-pdf-to-kb', name: 'Compress PDF to KB', short: 'Shrink a PDF to 100 KB, 200 KB or any size for forms.',
+    metaDescription: 'Compress a PDF to a specific size like 100KB, 200KB or 500KB for exam and job application forms. Free, private, in your browser.',
+    intro: 'Online forms often say “upload PDF under 200 KB”. Pick the size and LifeKit shrinks your document until it fits.',
+    category: 'pdf', icon: 'FileArchive', keywords: ['compress pdf to 100kb', 'compress pdf to 200kb', 'reduce pdf size in kb', 'pdf under 500kb', 'pdf for exam form'],
+    badge: 'new', handlesFiles: true,
+    steps: ['Drop your PDF into the box.', 'Pick a target size or type your own.', 'Press Compress and download.'],
+    faqs: [
+      { q: 'Will the text still be selectable?', a: 'To reach small sizes, pages are saved as images, so text can’t be selected afterwards. It still looks the same when printed or viewed.' },
+      { q: 'What if it can’t reach my size?', a: 'You’ll get the smallest possible version and a message. Try Black & white, or a slightly larger target.' },
+    ],
+    related: ['pdf-compressor', 'compress-image-to-kb', 'images-to-pdf'],
+  },
+  {
+    slug: 'passport-photo-maker', name: 'Passport Photo Maker', short: 'Crop passport and visa photos and print several on one sheet.',
+    metaDescription: 'Make passport size photos online: crop to 35×45 mm, 2×2 inch and more, then print 6–8 copies on 4×6 photo paper or A4. Free, private.',
+    intro: 'Skip the studio. Crop your photo to the right passport or visa size, then download a single photo or a print sheet with several copies on 4×6 photo paper or A4.',
+    category: 'image', icon: 'IdCard', keywords: ['passport size photo', 'passport photo maker', '35x45 photo', '2x2 photo', 'visa photo', 'passport photo print sheet'],
+    badge: 'new', handlesFiles: true,
+    steps: ['Upload a front-facing photo on a plain light background.', 'Choose the photo size and drag/zoom to fit your face in the oval.', 'Download a single photo or a print sheet.', 'Print at 100% (actual size).'],
+    faqs: [
+      { q: 'Does it change the background to white?', a: 'No. Take your photo against a plain white or light wall for the best result.' },
+      { q: 'Will it be accepted?', a: 'It produces the correct size at 300 DPI. Acceptance also depends on lighting, expression and background, so check your country’s official rules.' },
+    ],
+    related: ['crop-image', 'compress-image-to-kb', 'image-resizer'],
+  },
+  {
+    slug: 'heic-to-jpg', name: 'HEIC to JPG', short: 'Convert iPhone photos (.HEIC) to JPG or PNG.',
+    metaDescription: 'Convert HEIC to JPG online for free: turn iPhone photos into JPG or PNG that work everywhere. Batch convert, private, no upload.',
+    intro: 'iPhone photos are saved as HEIC, which many websites and forms won’t accept. Convert them to JPG or PNG in seconds.',
+    category: 'image', icon: 'Smartphone', keywords: ['heic to jpg', 'heic converter', 'iphone photo to jpg', 'heif to jpg', 'convert heic'],
+    handlesFiles: true, steps: ['Drop your .HEIC photos.', 'Choose JPG or PNG.', 'Convert and download.'],
+    faqs: [{ q: 'Can my iPhone save JPG instead?', a: 'Yes: Settings → Camera → Formats → Most Compatible.' }],
+    related: ['image-converter', 'image-compressor', 'image-resizer'],
+  },
+  {
+    slug: 'qr-code-scanner', name: 'QR Code Scanner', short: 'Scan QR codes with your camera or from a screenshot.',
+    metaDescription: 'Scan QR codes online with your camera or by uploading a screenshot. Free QR reader that works on your device: nothing is uploaded.',
+    intro: 'Read any QR code using your camera, or upload a screenshot or photo that contains one. The code is decoded on your device.',
+    category: 'generators', icon: 'ScanQrCode', keywords: ['qr code scanner', 'scan qr code online', 'qr reader', 'scan qr from image', 'qr code from screenshot'],
+    handlesFiles: true, steps: ['Press “Scan with camera” and allow access, or upload a screenshot.', 'Point at the QR code.', 'Copy the result or open the link.'],
+    faqs: [{ q: 'Is it safe to open QR links?', a: 'Check the address first. Scammers sometimes use QR codes to send people to fake payment or login pages.' }],
+    related: ['qr-code-generator', 'whatsapp-link-generator', 'barcode-generator'],
+  },
+  {
+    slug: 'add-text-to-image', name: 'Add Text to Image', short: 'Make memes, quotes and captions on photos.',
+    metaDescription: 'Add text to any photo online: make memes with classic top and bottom text, quote images and captions. Choose style, size and colour.',
+    intro: 'Put text on a picture in seconds: classic memes, quotes or captions. Choose the style, size and colour and download.',
+    category: 'image', icon: 'Captions', keywords: ['add text to image', 'meme generator', 'meme maker', 'text on photo', 'caption image'],
+    handlesFiles: true, steps: ['Upload an image.', 'Type top and bottom text.', 'Pick a style and download.'],
+    faqs: [{ q: 'Can I use any image?', a: 'Use your own photos or images you have the right to use.' }],
+    related: ['collage-maker', 'crop-image', 'image-resizer'],
+  },
+  {
+    slug: 'collage-maker', name: 'Photo Collage Maker', short: 'Combine 2–9 photos into one collage.',
+    metaDescription: 'Free photo collage maker: combine up to 9 photos into a square, 4:5, story or wide collage with spacing, rounded corners and background colour.',
+    intro: 'Turn several photos into one beautiful collage for Instagram, WhatsApp status or printing. The layout adjusts automatically.',
+    category: 'image', icon: 'LayoutGrid', keywords: ['collage maker', 'photo collage', 'photo grid', 'combine photos', 'instagram collage'],
+    handlesFiles: true, steps: ['Add 2–9 photos.', 'Choose the shape, spacing and corners.', 'Download the collage.'],
+    faqs: [{ q: 'What size is the collage?', a: 'High resolution: 2160 px wide for square and 4:5, and 1620 × 2880 for stories.' }],
+    related: ['instagram-grid-maker', 'add-text-to-image', 'image-resizer'],
+  },
+  {
+    slug: 'instagram-grid-maker', name: 'Instagram Grid Maker', short: 'Split one photo into a 3×1, 3×2 or 3×3 grid.',
+    metaDescription: 'Split a photo into an Instagram grid: 3×1, 3×2 or 3×3 tiles in the new 4:5 or square shape, numbered in posting order.',
+    intro: 'Create a giant puzzle picture on your Instagram profile. Split one photo into tiles that line up perfectly when posted in order.',
+    category: 'image', icon: 'Grid3x3', keywords: ['instagram grid maker', 'split image for instagram', 'grid splitter', 'instagram puzzle', '3x3 grid'],
+    handlesFiles: true, steps: ['Upload a photo.', 'Choose 3×1, 3×2 or 3×3 and the tile shape.', 'Download the tiles and post them in the numbered order.'],
+    faqs: [{ q: 'Why 4:5 tiles?', a: 'Instagram’s profile grid now shows posts as taller rectangles, so 4:5 tiles line up best.' }],
+    related: ['collage-maker', 'image-resizer', 'crop-image'],
+  },
+  {
+    slug: 'blur-image', name: 'Blur & Hide Info in Image', short: 'Pixelate or black out private details before sharing.',
+    metaDescription: 'Blur or black out parts of a screenshot or photo: hide names, phone numbers, addresses, faces or bank details before sharing. Private, in your browser.',
+    intro: 'Sharing a screenshot? Drag over names, numbers, faces or addresses to pixelate them or cover them with a black box.',
+    category: 'image', icon: 'EyeOff', keywords: ['blur image', 'pixelate image', 'censor screenshot', 'hide information in photo', 'blur face'],
+    handlesFiles: true, steps: ['Upload a screenshot or photo.', 'Drag over the parts to hide.', 'Download the safe version.'],
+    faqs: [{ q: 'Is pixelation safe for passwords or bank numbers?', a: 'Use Black box for sensitive data: it removes the information completely, while pixelation can sometimes be guessed.' }],
+    related: ['crop-image', 'add-text-to-image', 'image-compressor'],
+  },
+  {
+    slug: 'invoice-generator', name: 'Invoice Generator', short: 'Create professional invoices with GST/VAT as PDF.',
+    metaDescription: 'Free invoice generator: add your logo, items, GST or VAT and discounts, then download a professional PDF invoice. No sign-up, saved on your device.',
+    intro: 'Bill clients in minutes. Add your business details, logo and items, and LifeKit works out tax and totals and creates a clean PDF invoice.',
+    category: 'pdf', icon: 'ReceiptText', keywords: ['invoice generator', 'free invoice maker', 'gst invoice', 'bill generator', 'invoice pdf', 'freelance invoice'],
+    badge: 'new', handlesFiles: false,
+    steps: ['Fill in your details and the client’s.', 'Add items, quantities and rates.', 'Set tax and discount.', 'Download the PDF.'],
+    faqs: [
+      { q: 'Is it a valid GST invoice?', a: 'It includes the common fields (GSTIN, tax, totals), but GST invoices have specific legal requirements. Check what your business needs.' },
+      { q: 'Is my data saved?', a: 'Your details are saved in this browser for next time. Nothing is uploaded.' },
+    ],
+    related: ['gst-calculator', 'number-to-words', 'resume-builder'],
+  },
+  {
+    slug: 'resume-builder', name: 'Resume Builder', short: 'Fill in a form and download a clean, ATS-friendly resume.',
+    metaDescription: 'Free resume builder: fill in your experience, education and skills and download a clean, ATS-friendly PDF resume. No sign-up, saved on your device.',
+    intro: 'Create a professional one-column resume that recruiters and applicant tracking systems can read easily. Fill in the form and download a PDF.',
+    category: 'pdf', icon: 'FileUser', keywords: ['resume builder', 'cv maker', 'free resume maker', 'ats resume', 'resume pdf', 'fresher resume'],
+    badge: 'new', handlesFiles: false,
+    steps: ['Fill in your contact details and summary.', 'Add experience, projects and education with bullet points.', 'Add skills and achievements.', 'Download the PDF.'],
+    faqs: [
+      { q: 'Is it ATS-friendly?', a: 'Yes. It uses a simple single-column layout with standard headings and real text, which applicant tracking systems read well.' },
+      { q: 'Is my information private?', a: 'Everything stays in your browser. Nothing is uploaded.' },
+    ],
+    related: ['invoice-generator', 'text-to-handwriting', 'word-counter'],
   },
 ];
 

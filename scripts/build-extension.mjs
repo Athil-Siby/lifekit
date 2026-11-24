@@ -32,6 +32,7 @@ if (!/^(https:\/\/[^/]+|http:\/\/localhost(:\d+)?)$/.test(site)) {
 
 const { tools, categories } = await import(join(root, 'src/config/tools.ts'));
 const emoji = {
+  'text-to-handwriting': '✍️', 'attendance-calculator': '📅', 'fancy-text-generator': '✨', 'marks-percentage-calculator': '💯', 'number-to-words': '🔤', 'text-repeater': '🔁', 'whatsapp-link-generator': '💬', 'income-tax-calculator': '₹', 'fd-rd-calculator': '🏦', 'fuel-cost-calculator': '⛽', 'sleep-calculator': '😴', 'countdown-timer': '⏳', 'world-clock': '🌍', 'reaction-time-test': '⚡', 'tally-counter': '🔢', 'team-generator': '👥', 'base-converter': '0x', 'regex-tester': '.*', 'favicon-generator': '🖼️', 'compress-pdf-to-kb': '📉', 'passport-photo-maker': '🪪', 'heic-to-jpg': '📱', 'qr-code-scanner': '📷', 'add-text-to-image': '🅰️', 'collage-maker': '🧩', 'instagram-grid-maker': '▦', 'blur-image': '🙈', 'invoice-generator': '🧾', 'resume-builder': '📄',
   'image-resizer': '📐', 'crop-image': '✂️', 'compress-image-to-kb': '🗜️', 'image-to-text': '🔤', 'color-picker': '🎨', 'sign-pdf': '✍️', 'pdf-page-numbers': '🔢', 'watermark-pdf': '💧',
   'speech-to-text': '🎙️', notepad: '🗒️', 'todo-list': '✅', 'text-compare': '🆚', 'lorem-ipsum-generator': '📃', 'typing-test': '⌨️', 'spin-the-wheel': '🎡', 'random-number-generator': '🎲',
   'barcode-generator': '▮', 'scientific-calculator': '🧪', 'sip-calculator': '📈', 'compound-interest-calculator': '🐷', 'gst-calculator': '🧾', 'cgpa-to-percentage': '🎓', 'calorie-calculator': '🔥',

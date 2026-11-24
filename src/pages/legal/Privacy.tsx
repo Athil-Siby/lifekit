@@ -67,14 +67,17 @@ export default function Privacy() {
         generator. Generated passwords are never stored or transmitted.
       </p>
       <p>
-        <strong>Saved on your device.</strong> The Notepad, To-Do List, Alarm Clock, Spin the Wheel and Typing Test
-        save your notes, tasks, alarms, options and best score in your browser’s local storage so they are still there
-        next time. This data stays on your device; clearing your browser data deletes it.
+        <strong>Saved on your device.</strong> Some tools remember your work in your browser’s local storage so it is
+        still there next time: the Notepad, To-Do List, Alarm Clock, World Clock, Tally Counter, Spin the Wheel,
+        Typing and Reaction tests (best scores), Invoice Generator and Resume Builder (your draft details), and a short
+        list of recently used tools on the home page. This data stays on your device and is never sent to us; clearing
+        your browser data deletes it.
       </p>
       <p>
-        <strong>Microphone and screen.</strong> The Voice Recorder and Screen Recorder only access your microphone or
-        screen after you allow it in your browser. Recordings are kept in the page’s memory and saved only when you
-        download them; they are never uploaded.
+        <strong>Camera, microphone and screen.</strong> The QR Code Scanner, Voice Recorder and Screen Recorder only
+        access your camera, microphone or screen after you allow it in your browser. Camera frames are scanned on your
+        device and discarded immediately; recordings are kept in the page’s memory and saved only when you download
+        them. Nothing is uploaded.
       </p>
       <p>
         <strong>Speech to Text.</strong> This tool uses your browser’s built-in speech recognition. In Google Chrome
